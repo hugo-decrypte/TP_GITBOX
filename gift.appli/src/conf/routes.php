@@ -1,6 +1,7 @@
 <?php
 
 
+use gift\appli\Controllers\CategorieIdAction;
 use gift\appli\Controllers\CategoriesAction;
 use gift\appli\models\Categorie;
 use gift\appli\models\Prestation;
@@ -10,16 +11,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 return function ($app) {
     $app->get('/categories', new CategoriesAction());
-    $app->get('/categories/{id}', function (Request $request, Response $response, array $args) {
-        $categories = Categorie::all()->where('id','=',$args['id']);
-        $res = "";
-        foreach ($categories as $category) {
-            $res .= $category->libelle . "<br>";
-            $res .= "Description : " . $category->description . "<br>";
-        }
-        $response->getBody()->write($res);
-        return $response;
-    });
+    $app->get('/categories/{id}', new CategorieIdAction());
 
     $app->get('/prestation', function (Request $request, Response $response, array $args){
         $res = "";
