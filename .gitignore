@@ -1,3 +1,8 @@
 /gift.appli/src/conf/db.ini
 /gift.appli/src/composer.lock
 /gift.appli/src/vendor/
+/.idea/vcs.xml
+/.idea/TP_GITBOX.iml
+/.idea/php.xml
+/.idea/modules.xml
+/.idea/.gitignore
