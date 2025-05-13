@@ -1,0 +1,5 @@
+{% for category in categories %}
+    {% if not loop.first %} - {% endif %}<a href='/categories/{{ category.id }}'> {{ category.libelle }}</a>
+{% endfor %}
+
+{% block details %}{% endblock %}

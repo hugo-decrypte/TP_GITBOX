@@ -7,18 +7,14 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 class CategoriesAction extends AbstractAction{
+    private $twig;
+    public function __construct($twig) {
+        $this->twig = $twig;
+    }
 
     public function __invoke(Request $request, Response $response, array $args) {
-        $categories = Categorie::all();
-        $first = true;
-        foreach ($categories as $category) {
-            if (!$first) {
-                $response->getBody()->write(" - ");
-            } else {
-                $first = false;
-            }
-            $response->getBody()->write("<a href='/categories/{$category->id}'> {$category->libelle}</a>");
-        }
+        $html = $this->twig->render('categories.html.twig', ['categories' => Categorie::all()]);
+        $response->getBody()->write($html);
         return $response;
     }
 }
