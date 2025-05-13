@@ -2,6 +2,7 @@
 
 namespace gift\appli\Controllers;
 use gift\appli\models\Prestation;
+use PhpParser\Error;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -11,14 +12,18 @@ class PrestationAction extends AbstractAction {
     {
         $res = "";
         if($request->getQueryParams() == null) {
-            $res .= "Aucun id renseigné";
+            return new Response(400);
         } else {
-            $prestation = Prestation::all()->where('id', '=', $request->getQueryParams()['id']);
-            foreach ($prestation as $p){
+            $prestations = Prestation::all()->where('id', '=', $request->getQueryParams()['id']);
+            foreach ($prestations as $p){
                 $res .= $p->libelle . ' : <br>' . $p->description . '<br> Tarif : ' .  $p->tarif . '<br>';
+            }
+            if(sizeof($prestations) == 0) {
+                return new Response(404);
             }
         }
         $response->getBody()->write($res);
         return $response;
+
     }
 }

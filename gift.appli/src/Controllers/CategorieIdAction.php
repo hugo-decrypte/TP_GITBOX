@@ -17,6 +17,9 @@ class CategorieIdAction extends AbstractAction {
             $res .= $category->libelle . "<br>";
             $res .= "Description : " . $category->description . "<br>";
         }
+        if(sizeof($categories) == 0) {
+            return new Response(404);
+        }
         $response->getBody()->write($res);
         return $response;
     }
