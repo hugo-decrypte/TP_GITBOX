@@ -2,6 +2,6 @@
 
 ### BENA      Hugo
 ### CHERCHARI Sofien
-### REGNIER   Eloi 
+### REIGNIER   Eloi 
 ### LÉVÊQUE   Tuline
 ### VIRY      Nathan
