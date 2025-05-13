@@ -9,11 +9,15 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 return function ($app) {
     $app->get('/categories', function (Request $request, Response $response, array $args) {
         $categories = Categorie::all();
-        $res = "";
+        $first = true;
         foreach ($categories as $category) {
-            $res .= $category->libelle . "<br>";
+            if (!$first) {
+                $response->getBody()->write(" - ");
+            } else {
+                $first = false;
+            }
+            $response->getBody()->write("<a href='/categorie/{$category->id}'> {$category->libelle}</a>");
         }
-        $response->getBody()->write($res);
         return $response;
     });
     return $app;
