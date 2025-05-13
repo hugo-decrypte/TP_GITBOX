@@ -16,9 +16,21 @@ return function ($app) {
             } else {
                 $first = false;
             }
-            $response->getBody()->write("<a href='/categorie/{$category->id}'> {$category->libelle}</a>");
+            $response->getBody()->write("<a href='/categories/{$category->id}'> {$category->libelle}</a>");
         }
         return $response;
     });
+
+    $app->get('/categories/{id}', function (Request $request, Response $response, array $args) {
+        $categories = Categorie::all()->where('id','=',$args['id']);
+        $res = "";
+        foreach ($categories as $category) {
+            $res .= $category->libelle . "<br>";
+            $res .= "Description : " . $category->description . "<br>";
+        }
+        $response->getBody()->write($res);
+        return $response;
+    });
+
     return $app;
 };
