@@ -9,10 +9,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use gift\appli\models\Categorie;
 use gift\appli\models\CoffretType;
 use gift\appli\models\Prestation;
+use gift\appli\utils\Eloquent;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use gift\appli\services\Database;
 
-Database::connect('../conf/db.ini');
+Eloquent::init('../conf/db.ini');
 
 // Récupérer toutes les catégories
 $categories = Categorie::all();
