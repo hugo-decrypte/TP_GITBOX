@@ -14,4 +14,4 @@ Bienvenue dans le dépôt GitHub du projet **GIFTBOX**,
 - **LÉVÊQUE Tuline**
 - **VIRY Nathan**
 
-Merci de votre visite ! ⭐️ N'hésitez pas à suivre ou contribuer !
+Merci de votre visite !! ⭐️
