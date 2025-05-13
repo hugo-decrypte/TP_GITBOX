@@ -1,7 +1,7 @@
 # TP_GITBOX
 
-BENA      Hugo
-CHERCHARI Sofien
+BENA      Hugo/n
+CHERCHARI Sofien/n
 REGNIER   Eloi 
 LÉVÊQUE   Tuline
 VIRY      Nathan
