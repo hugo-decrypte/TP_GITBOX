@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Giftbox{% endblock %}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Giftbox{% endblock %}</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    {% block stylesheets %}{% endblock %}
-</head>
-    <body class="bg-gray-50 text-gray-800">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
         {% include "base/header.html.twig" %}
-        <main class="max-w-7xl mx-auto p-6">
+
+        <main class="max-w-7xl mx-auto p-6 flex-grow">
             {% block body %}{% endblock %}
         </main>
-        {% include "base/nav.html.twig" %}
+
+        {% include "base/footer.html.twig" %}
     </body>
 </html>
