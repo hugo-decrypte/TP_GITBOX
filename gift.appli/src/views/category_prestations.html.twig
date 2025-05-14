@@ -1,0 +1,13 @@
+{% extends "category_by_id.html.twig" %}
+
+{% block prestations %}
+    <h2>Prestations pour la catégorie : {{ category.libelle }}</h2>
+
+    <ul>
+        {% for p in prestations %}
+            <li>{{ p.libelle }} - {{ p.tarif }} €</li>
+        {% else %}
+            <li>Aucune prestation disponible pour cette catégorie.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
