@@ -8,21 +8,20 @@ use Slim\Psr7\Response;
 
 class PrestationAction extends AbstractAction {
 
+    private $twig;
+    public function __construct($twig){
+        $this->twig = $twig;
+    }
+
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $res = "";
         if($request->getQueryParams() == null) {
             return new Response(400);
         } else {
-            $prestations = Prestation::all()->where('id', '=', $request->getQueryParams()['id']);
-            foreach ($prestations as $p){
-                $res .= $p->libelle . ' : <br>' . $p->description . '<br> Tarif : ' .  $p->tarif . '<br>';
-            }
-            if(sizeof($prestations) == 0) {
-                return new Response(404);
-            }
+            $prestation = Prestation::all()->where('id', '=', $request->getQueryParams()['id'])->first();
         }
-        $response->getBody()->write($res);
+        $html = $this->twig->render('prestation.html.twig', ['prestation' => $prestation]);
+        $response->getBody()->write($html);
         return $response;
 
     }
