@@ -9,13 +9,13 @@
 
     {% block stylesheets %}{% endblock %}
 </head>
-    <body class="bg-gray-50 text-gray-800">
+    <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-purple-600">🎁 Giftbox</h1>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-purple-600">🎁 Giftbox</h1>
+    </div>
 
-        <main class="max-w-7xl mx-auto p-6">
+        <main class="max-w-7xl mx-auto p-6 flex-grow">
             {% block body %}{% endblock %}
         </main>
 
