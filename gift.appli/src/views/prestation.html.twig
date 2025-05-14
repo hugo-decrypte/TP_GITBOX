@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "base/base.html.twig" %}
 
 {% block body %}
     <div class="max-w-2xl mx-auto mt-8 bg-white p-6 shadow rounded">
@@ -15,8 +15,13 @@
         <p class="text-gray-800 font-medium">
             Tarif :
             <span class="text-green-600">{{ prestation.tarif is not null ? prestation.tarif ~ ' €' : 'Non renseigné' }}</span>
-
-            <img class="mt-4" src="./images/img/{{ prestation.img }}" alt="{{ prestation.img }}">
         </p>
+
+        <p class="text-gray-800 font-medium">
+            Unité :
+            <span class="text-blue-600">{{ (prestation.unite is not null ? prestation.unite : 'Non renseigné')|upper }}</span>
+        </p>
+
+        <img class="mt-4" src="./images/img/{{ prestation.img }}" alt="{{ prestation.img }}">
     </div>
 {% endblock %}
