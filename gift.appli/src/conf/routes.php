@@ -6,6 +6,8 @@ use gift\appli\Controllers\CategoriesAction;
 use gift\appli\Controllers\HomeAction;
 use gift\appli\Controllers\PrestationAction;
 use gift\appli\Controllers\PrestationParCategorieAction;
+use gift\appli\Controllers\ThemesAction;
+
 
 return function ($app) {
     $app->get('/categories', CategoriesAction::class)
@@ -19,7 +21,8 @@ return function ($app) {
 
     $app->get('/categories/{id}/prestations', PrestationParCategorieAction::class)
         ->setName('prestationsByCategory');
-
+    $app->get('/theme', ThemesAction::class)
+        ->setName("themes");
     $app->get('/', HomeAction::class)
         ->setName('homepage');
 

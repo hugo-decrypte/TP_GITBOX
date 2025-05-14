@@ -1,0 +1,23 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+    <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Catégories :</h2>
+        <div class="flex flex-wrap gap-2">
+            {% for theme in themes %}
+                <a href="/theme/{{ theme.id }}"
+                   class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition">
+                    {{ theme.libelle }}
+                </a>
+            {% else %}
+                <p class="text-gray-500">Aucun thème disponible.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% block details %}
+        <div class="mt-6 text-gray-600 italic">
+            <p>Sélectionnez un thème pour voir les coffrets de base disponibles.</p>
+        </div>
+    {% endblock %}
+{% endblock %}
