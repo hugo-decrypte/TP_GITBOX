@@ -3,15 +3,19 @@
 
 use gift\appli\utils\Eloquent;
 use Slim\Factory\AppFactory;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
 Eloquent::init(__DIR__.'/db.ini');
 
-$loader = new FilesystemLoader(__DIR__.'/../views');
-$twig = new Environment($loader, ['debug' => true]);
+$twig = Twig::create(__DIR__. '/../views',
+    ['cache' => 'path/to/cache-dir',
+        'auto_reload' => true]);
+
 
 $app = AppFactory::create();
-$app = (require_once __DIR__ . '/routes.php')($app, $twig);
+
+$app->add(TwigMiddleware::create($app, $twig));
+$app = (require_once __DIR__ . '/routes.php')($app);
 
 return $app;
