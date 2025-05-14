@@ -13,9 +13,12 @@
 
         {% include "base/header.html.twig" %}
 
-        <main class="max-w-7xl mx-auto p-6 flex-grow">
-            {% block body %}{% endblock %}
-        </main>
+        <div class="flex flex-grow">
+            {% include "base/nav.html.twig" %}
+            <main class="max-w-7xl mx-auto p-6">
+                {% block body %}{% endblock %}
+            </main>
+        </div>
 
         {% include "base/footer.html.twig" %}
     </body>

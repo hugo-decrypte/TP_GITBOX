@@ -3,7 +3,7 @@
 {% block button %}
     <a
             class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition"
-            href="/categories/{{ category.id }}">
+            href="{{ url_for("categoryById",{id:category.id}) }}">
         Ne plus voir les préstations de cette catégorie
     </a>
 {% endblock %}
@@ -18,7 +18,7 @@
             <ul class="space-y-3">
                 {% for p in prestations %}
                     <li class="p-4 bg-white shadow rounded flex justify-between items-center">
-                        <a href="/prestation?id={{ p.id }}" class="font-medium text-gray-800">{{ p.libelle|e }}</a>
+                        <a href="{{ url_for("prestation") }}?id={{ p.id }}" class="font-medium text-gray-800">{{ p.libelle|e }}</a>
                         <span class="text-green-600">{{ p.tarif|number_format(2, ',', ' ') }} €</span>
                     </li>
                 {% endfor %}

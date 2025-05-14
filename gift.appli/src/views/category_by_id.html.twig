@@ -9,7 +9,7 @@
 
         <br>
         {% block button %}
-            <a class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition" href="/categories/{{ category.id }}/prestations"> Voir les prestations de cette catégorie </a>
+            <a class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition" href="{{ url_for("prestationsByCategory",{id:category.id}) }}"> Voir les prestations de cette catégorie </a>
         {% endblock %}
     </div>
 
