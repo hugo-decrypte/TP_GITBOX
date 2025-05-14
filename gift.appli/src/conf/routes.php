@@ -12,16 +12,13 @@ use gift\appli\Controllers\ThemesAction;
 return function ($app) {
     $app->get('/categories', CategoriesAction::class)
         ->setName('categories');
-
     $app->get('/categories/{id}', CategorieIdAction::class)
         ->setName('categoryById');
-
     $app->get('/prestation', PrestationAction::class)
         ->setName('prestation');
-
     $app->get('/categories/{id}/prestations', PrestationParCategorieAction::class)
         ->setName('prestationsByCategory');
-    $app->get('/theme', ThemesAction::class)
+    $app->get('/themes', ThemesAction::class)
         ->setName("themes");
     $app->get('/', HomeAction::class)
         ->setName('homepage');
