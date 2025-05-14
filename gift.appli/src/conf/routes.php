@@ -9,19 +9,19 @@ use gift\appli\Controllers\PrestationParCategorieAction;
 
 return function ($app) {
     $app->get('/categories', CategoriesAction::class)
-        ->setName('categories.all');
+        ->setName('categories');
 
     $app->get('/categories/{id}', CategorieIdAction::class)
-        ->setName('categorie.parId');
+        ->setName('categoryById');
 
     $app->get('/prestation', PrestationAction::class)
-        ->setName('prestation.single');
+        ->setName('prestation');
 
     $app->get('/categories/{id}/prestations', PrestationParCategorieAction::class)
-        ->setName('prestations.parCategorie');
+        ->setName('prestationsByCategory');
 
     $app->get('/', HomeAction::class)
-        ->setName('Home.page');
+        ->setName('homepage');
 
     return $app;
 };
