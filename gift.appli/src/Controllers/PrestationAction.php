@@ -5,25 +5,18 @@ use gift\appli\models\Prestation;
 use PhpParser\Error;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Views\Twig;
 
 class PrestationAction extends AbstractAction {
-
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $res = "";
+        $twig = Twig::fromRequest($request);
         if($request->getQueryParams() == null) {
             return new Response(400);
         } else {
-            $prestations = Prestation::all()->where('id', '=', $request->getQueryParams()['id']);
-            foreach ($prestations as $p){
-                $res .= $p->libelle . ' : <br>' . $p->description . '<br> Tarif : ' .  $p->tarif . '<br>';
-            }
-            if(sizeof($prestations) == 0) {
-                return new Response(404);
-            }
+            $prestation = Prestation::all()->where('id', '=', $request->getQueryParams()['id'])->first();
         }
-        $response->getBody()->write($res);
-        return $response;
+        return $twig->render($response,'prestation.html.twig', ['prestation' => $prestation]);
 
     }
 }
