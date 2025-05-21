@@ -1,0 +1,9 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+    <p>Thème actuel : {{ coffrets.libelle }} </p>
+    {% for coffret in coffrets %}
+        <h3>Libellé : {{ coffret.libelle }}</h3>
+        <p>description : {{ coffret.description }}</p>
+    {% endfor %}
+{% endblock %}
