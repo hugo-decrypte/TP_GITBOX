@@ -1,0 +1,14 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    {% for p in prestations %}
+        <div class="p-5 m-2 bg-white shadow gap-6 rounded flex justify-between items-center">
+            <a href="{{ url_for("prestation") }}?id={{ p.id }}" class="font-medium text-gray-800">{{ p.libelle|e }}</a>
+            <span class="text-green-600">{{ p.tarif|number_format(2, ',', ' ') }} €</span>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
