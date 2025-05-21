@@ -1,0 +1,36 @@
+networks:
+  gift.net:
+    driver: bridge
+
+services:
+  php:
+    image: operrin/php:8.4.6
+    ports:
+      - "88:80"
+    volumes :
+      - ./gift.appli/public:/var/www/html
+      - ./gift.appli/src:/var/www/src
+    working_dir: /var/www/src
+    networks:
+      - gift.net
+    command: sh -c  "composer install&&php -S 0.0.0.0:80 -t /var/www/html"
+
+  adminer:
+    image: adminer:5.2.1
+    ports:
+      - "8888:8080"
+    networks:
+      - gift.net
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: giftdb
+    ports:
+      - "3333:3306"
+    networks:
+      - gift.net
+    volumes:
+      - ./sql/gift.schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./sql/gift.data.sql:/docker-entrypoint-initdb.d/02_data.sql
