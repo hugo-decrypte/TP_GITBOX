@@ -8,6 +8,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 
+
+/**
+ * Contrôleur chargé d'afficher les prestations d'une catégorie spécifique.
+ */
 class PrestationParCategorieAction extends AbstractAction {
 
     public function __invoke(Request $request, Response $response, array $args): Response {
