@@ -11,9 +11,16 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
+/**
+ * Contrôleur pour afficher les détails d'une catégorie spécifique.
+ */
 class CategorieIdAction extends AbstractAction {
 
     /**
+     * Méthode d'invocation automatique de la route.
+     *
+     * Récupère une catégorie par son identifiant et génère la vue correspondante.
+     *
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError

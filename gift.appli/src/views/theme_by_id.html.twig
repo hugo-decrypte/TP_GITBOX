@@ -1,0 +1,18 @@
+{% extends "theme.html.twig" %}
+
+{% block details %}
+    {% if coffrets is empty %}
+        <div class="mt-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4">
+            Aucun coffret disponible pour ce thème.
+        </div>
+    {% else %}
+        {% for coffret in coffrets %}
+            <div class="mt-8 bg-white shadow rounded p-6">
+                <h1 class="text-2xl font-bold text-purple-700 mb-4">{{ coffrets.libelle|upper }}</h1>
+
+                <h3 class="text-lg font-semibold text-gray-700 mb-2">Description :</h3>
+                <p class="text-gray-600">{{ coffret.description|default('Aucune description disponible.')|e }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

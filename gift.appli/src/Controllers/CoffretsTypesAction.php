@@ -1,0 +1,26 @@
+<?php
+
+namespace gift\appli\Controllers;
+
+use gift\appli\models\CoffretType;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
+use Slim\Views\Twig;
+
+/**
+ * Contrôleur chargé d'afficher la liste de toutes les coffrets_types.
+ */
+
+class CoffretsTypesAction extends AbstractAction {
+
+    /***
+     * Récupère toutes les coffrets et les passe au template Twig.
+     **/
+
+    public function __invoke(Request $request, Response $response, array $args) {
+        $twig = Twig::fromRequest($request);
+        return $twig->render($response, 'coffrets_types.html.twig', [
+            'coffretsTypes' => CoffretType::all()
+        ]);
+    }
+}

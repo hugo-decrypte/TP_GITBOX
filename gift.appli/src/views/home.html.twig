@@ -1,15 +1,24 @@
 {% extends "categories.html.twig" %}
 
+{% block title %}Accueil - Giftbox{% endblock %}
+
 {% block body %}
-    <h1>Bienvenue sur Giftbox !</h1>
-    <br>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed placerat nisi.
-        Aenean aliquam elementum turpis, vel lacinia elit porttitor a.
-        Nam fringilla risus vitae elit bibendum egestas. Donec euismod ac purus vel ultricies.
-        Aenean dapibus ornare sodales. Praesent egestas pellentesque pulvinar.
-        Sed pellentesque orci leo, id fermentum mi varius tincidunt. Quisque vel turpis nunc.
-        Vivamus eu erat quis nunc elementum laoreet. Nullam mauris massa, pharetra non blandit ac, tempus ac dolor.
-        Suspendisse ut nibh nec ligula fringilla gravida. Morbi rhoncus arcu id purus condimentum, at porta est convallis.</p>
-    <br>
-    <br>
+    <div class="text-center mt-12 space-y-8">
+
+        <h1 class="text-4xl font-extrabold text-purple-600">Bienvenue sur Giftbox 🎁</h1>
+
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nam at neque id leo congue accumsan quis eu augue. Morbi blandit sed odio id tincidunt.
+            Aenean lectus nisl, cursus eu vulputate vitae, porta non dolor.             <br><br>
+
+            Proin quis lorem iaculis, vulputate nibh id, mollis nunc. Vivamus et sollicitudin nulla.
+            Maecenas arcu leo, malesuada sit amet scelerisque sed, tincidunt a ex.
+        </p>
+
+        <a href="/categories" class="inline-block px-6 py-3 bg-purple-600 text-white text-lg rounded-full shadow hover:bg-purple-700 transition">
+            Explorer les catégories
+        </a>
+
+    </div>
 {% endblock %}

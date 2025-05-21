@@ -11,6 +11,11 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
+
+/**
+ * Contrôleur de la page d'accueil de l'application.
+ */
+
 class HomeAction extends AbstractAction {
 
     public function __invoke(Request $request, Response $response, array $args)
