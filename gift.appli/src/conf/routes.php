@@ -21,7 +21,8 @@ return function ($app) {
         ->setName('prestationsByCategory');
     $app->get('/themes', ThemesAction::class)
         ->setName("themes");
-    $app->get('/theme/{id}', ThemeIdAction::class);
+    $app->get('/theme/{id}', ThemeIdAction::class)
+        ->setName('themeById');
 
     $app->get('/', HomeAction::class)
         ->setName('homepage');

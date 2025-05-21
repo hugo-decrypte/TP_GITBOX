@@ -21,20 +21,15 @@ class ThemeIdAction extends AbstractAction {
     public function __invoke(Request $request, Response $response, array $args)
     {
         $theme = Theme::where('id','=',$args['id'])->first();
-        $coffrets = Theme::whereHas('coffrets',function($query) {
-                                                    $query->select('libelle','description');
-                                                })
-                            ->where('id','=',$args['id'])
-                            ->get();
-
         if($theme == null) {
             return new Response(404);
         }
 
+        $coffrets = $theme->coffrets;
         $twig = Twig::fromRequest($request);
         return $twig->render($response,'theme_by_id.html.twig', [
             'coffrets' => $coffrets,
-            'theme' => $theme
+            'themes' => Theme::all()
         ]);
     }
 }
