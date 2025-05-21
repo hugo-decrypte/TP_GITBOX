@@ -5,7 +5,7 @@
         <h2 class="text-xl font-semibold text-gray-800 mb-2">Catégories :</h2>
         <div class="flex flex-wrap gap-2">
             {% for coffretType in coffretsTypes %}
-                <a href="#"
+                <a href="{{ url_for("PrestationsParCoffretType",{id: coffretType.id}) }}"
                    class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition">
                     {{ coffretType.libelle }}
                 </a>

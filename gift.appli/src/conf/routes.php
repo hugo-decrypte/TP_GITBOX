@@ -3,6 +3,7 @@
 
 use gift\appli\Controllers\CategorieIdAction;
 use gift\appli\Controllers\CategoriesAction;
+use gift\appli\Controllers\CoffretPrestationsAction;
 use gift\appli\Controllers\CoffretsTypesAction;
 use gift\appli\Controllers\HomeAction;
 use gift\appli\Controllers\PrestationAction;
@@ -26,6 +27,8 @@ return function ($app) {
         ->setName('themeById');
     $app->get('/', HomeAction::class)
         ->setName('homepage');
+    $app->get('/coffretsTypes/{id}/prestations', CoffretPrestationsAction::class)
+        ->setName('PrestationsParCoffretType');
     $app->get('/coffretsTypes', CoffretsTypesAction::class)
         ->setName('coffretsTypes');
 
