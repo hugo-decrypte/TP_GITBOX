@@ -13,6 +13,8 @@ services:
     working_dir: /var/www/src
     networks:
       - gift.net
+    depends_on:
+      - mysql
     command: sh -c  "composer install&&php -S 0.0.0.0:80 -t /var/www/html"
 
   adminer:
