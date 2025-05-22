@@ -6,3 +6,4 @@
 /.idea/php.xml
 /.idea/modules.xml
 /.idea/.gitignore
+/.env

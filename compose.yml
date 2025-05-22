@@ -24,9 +24,8 @@ services:
 
   mysql:
     image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: giftdb
+    env_file:
+      - .env
     ports:
       - "3333:3306"
     networks:
