@@ -1,17 +1,63 @@
-{% extends "categories.html.twig" %}
+<div id="categories-container" class="space-y-6 mt-6">
+    {% for category in categories %}
+        <div id="category-{{ category.id }}" class="category-details hidden bg-white shadow rounded p-6">
+            <h1 class="text-2xl font-bold text-purple-700 mb-4">{{ category.libelle|upper }}</h1>
 
-{% block details %}
-    <div class="mt-8 bg-white shadow rounded p-6">
-        <h1 class="text-2xl font-bold text-purple-700 mb-4">{{ category.libelle|upper }}</h1>
+            <h3 class="text-lg font-semibold text-gray-700 mb-2">Description :</h3>
+            <p class="text-gray-600">{{ category.description|default('Aucune description disponible.')|e }}</p>
 
-        <h3 class="text-lg font-semibold text-gray-700 mb-2">Description :</h3>
-        <p class="text-gray-600">{{ category.description|default('Aucune description disponible.')|e }}</p>
+            <div
+                    id="prestations-btn-{{ category.id }}"
+                    class="mt-4 px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition cursor-pointer">
+                <p id="show-{{ category.id }}" class="hidden">Ne plus voir les prestations de cette catégorie</p>
+                <p id="hide-{{ category.id }}">Voir les prestations de cette catégorie</p>
+            </div>
 
-        <br>
-        {% block button %}
-            <a class="px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition" href="{{ url_for("prestationsByCategory",{id:category.id}) }}"> Voir les prestations de cette catégorie </a>
-        {% endblock %}
-    </div>
+            <div id="dropdown-prestations-{{ category.id }}" class="mt-4 hidden">
+                <h2 class="text-xl font-bold text-purple-700 mb-4">
+                    Prestations pour la catégorie : {{ category.libelle|upper }}
+                </h2>
 
-    {% block prestations %}{% endblock %}
-{% endblock %}
+                {% set prestations_cat = prestations | filter(p => p.cat_id == category.id) %}
+
+                {% if prestations_cat is not empty %}
+                    <ul class="space-y-3">
+                        {% for p in prestations_cat %}
+                            <li class="p-4 bg-gray-50 shadow rounded flex justify-between items-center">
+                                <a href="{{ url_for("prestation") }}?id={{ p.id }}" class="font-medium text-gray-800">{{ p.libelle|e }}</a>
+                                <span class="text-green-600">{{ p.tarif|number_format(2, ',', ' ') }} €</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-gray-500 italic">Aucune prestation disponible pour cette catégorie.</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    // Gère l'affichage de la bonne catégorie
+    document.querySelectorAll('.category-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+
+            // Cacher toutes les divs de catégories
+            document.querySelectorAll('.category-details').forEach(div => div.classList.add('hidden'));
+
+            // Afficher celle qui correspond
+            document.getElementById(targetId).classList.remove('hidden');
+        });
+    });
+
+    // Gère le toggle des prestations pour chaque catégorie
+    document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.id.split('-')[2];
+            document.getElementById(`dropdown-prestations-${id}`).classList.toggle('hidden');
+            document.getElementById(`show-${id}`).classList.toggle('hidden');
+            document.getElementById(`hide-${id}`).classList.toggle('hidden');
+        });
+    });
+</script>
