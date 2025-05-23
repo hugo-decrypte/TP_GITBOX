@@ -1,17 +1,15 @@
-<header class="bg-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <!-- Logo à gauche -->
+<header class="top-0 left-0 w-full bg-white shadow-md z-50">
+    <div class="mx-auto px-4 py-4 flex justify-between items-center">
+
         <a href="{{ url_for('homepage') }}" class="text-2xl font-bold text-purple-600">
             🎁 Giftbox
         </a>
 
-        <!-- Boutons à droite -->
         <div class="flex items-center space-x-4">
             <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
                 Créer un coffret
             </button>
 
-            <!-- Dropdown Profil -->
             <div class="relative" x-data="{ open: false }">
                 <button id="profil_button" class="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200 flex items-center space-x-2">
                     <span>Profil</span>
@@ -20,7 +18,6 @@
                     </svg>
                 </button>
 
-                <!-- Menu déroulant -->
                 <div id="dropdown-menu" class="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 py-2 hidden">
                     <a href="#" class="block px-4 py-2 hover:bg-gray-100">Mon profil</a>
                     <a href="#" class="block px-4 py-2 hover:bg-gray-100">Mes coffrets</a>

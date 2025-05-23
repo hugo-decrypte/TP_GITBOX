@@ -9,7 +9,7 @@
 
         {% block stylesheets %}{% endblock %}
     </head>
-    <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+    <body class="min-h-screen bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
         {% include "base/header.html.twig" %}
 
@@ -19,6 +19,8 @@
                 {% block body %}{% endblock %}
             </main>
         </div>
+
+        {% block javascripts %}{% endblock %}
 
         {% include "base/footer.html.twig" %}
     </body>

@@ -13,6 +13,8 @@ services:
     working_dir: /var/www/src
     networks:
       - gift.net
+    depends_on:
+      - mysql
     command: sh -c  "composer install&&php -S 0.0.0.0:80 -t /var/www/html"
 
   adminer:
@@ -24,9 +26,8 @@ services:
 
   mysql:
     image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: giftdb
+    env_file:
+      - .env
     ports:
       - "3333:3306"
     networks:
