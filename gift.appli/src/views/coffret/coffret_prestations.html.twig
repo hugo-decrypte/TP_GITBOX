@@ -1,0 +1,65 @@
+<div id="coffrets-container" class="space-y-6 mt-6">
+    {% for coffret in coffrets %}
+        <div id="coffret-{{ coffret.id }}" class="coffret-details hidden bg-white shadow rounded p-6">
+            <h1 class="text-2xl font-bold text-purple-700 mb-4">{{ coffret.libelle|upper }}</h1>
+
+            <h3 class="text-lg font-semibold text-gray-700 mb-2">Description :</h3>
+            <p class="text-gray-600">{{ coffret.description|default('Aucune description disponible.') }}</p>
+
+            <div id="prestations-btn-{{ coffret.id }}"
+                 class="mt-4 px-3 py-1 bg-purple-100 text-purple-800 rounded hover:bg-purple-200 transition cursor-pointer">
+                <p id="show-{{ coffret.id }}" class="hidden">Ne plus voir les prestations de ce coffret</p>
+                <p id="hide-{{ coffret.id }}">Voir les prestations de ce coffret</p>
+            </div>
+
+            <div id="dropdown-prestations-{{ coffret.id }}" class="mt-4 hidden">
+                <h2 class="text-xl font-bold text-purple-700 mb-4">
+                    Prestations dans le coffret : {{ coffret.libelle|upper }}
+                </h2>
+
+                {% if coffret.prestations is not empty %}
+                    <ul class="space-y-3">
+                        {% for p in coffret.prestations %}
+                            <li class="p-4 bg-gray-50 shadow rounded flex justify-between items-center">
+                                <a href="{{ url_for("prestations") }}#{{ p.id }}" class="font-medium text-gray-800">{{ p.libelle }}</a>
+                                <span class="text-green-600">{{ p.tarif|number_format(2, ',', ' ') }} €</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-gray-500 italic">Aucune prestation dans ce coffret.</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    // Affichage du coffret sélectionné
+    document.querySelectorAll('.coffret-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+
+            // Masquer toutes les divs
+            document.querySelectorAll('.coffret-details').forEach(div => div.classList.add('hidden'));
+
+            // Afficher celle sélectionnée
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.classList.remove('hidden');
+            } else {
+                console.warn("Div introuvable :", targetId);
+            }
+        });
+    });
+
+    // Toggle des prestations
+    document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.id.split('-')[2];
+            document.getElementById(`dropdown-prestations-${id}`).classList.toggle('hidden');
+            document.getElementById(`show-${id}`).classList.toggle('hidden');
+            document.getElementById(`hide-${id}`).classList.toggle('hidden');
+        });
+    });
+</script>

@@ -1,0 +1,23 @@
+<script>
+    if (window.location.hash && window.location.hash.length > 1) {
+        document.getElementById("prestation-" + window.location.hash.substring(1)).classList.remove("hidden");
+        document.getElementById("prestation-liste").classList.add("hidden");
+    } else {
+    }
+
+    document.querySelectorAll(".prestations-buttons").forEach(btn => {
+        btn.addEventListener("click", function() {
+            const targetId = btn.getAttribute('data-target');
+            document.getElementById(targetId).classList.remove("hidden");
+            document.getElementById("prestation-liste").classList.add("hidden");
+        })
+    })
+
+    document.querySelectorAll(".retour").forEach(btn => {
+        btn.addEventListener("click", function(){
+            const targetId = btn.getAttribute("data-target");
+            document.getElementById(targetId).classList.add("hidden");
+            document.getElementById("prestation-liste").classList.remove("hidden");
+        })
+    })
+</script>

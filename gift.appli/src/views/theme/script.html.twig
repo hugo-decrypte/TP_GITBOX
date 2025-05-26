@@ -1,0 +1,11 @@
+<script>
+    document.querySelectorAll(".themes-buttons").forEach(btn => {
+        btn.addEventListener("click", function(){
+            document.querySelectorAll(".themes-details").forEach(el => {
+                el.classList.add("hidden");
+            })
+            const targetId = btn.getAttribute("data-target");
+            document.getElementById(targetId).classList.remove("hidden");
+        });
+    });
+</script>
