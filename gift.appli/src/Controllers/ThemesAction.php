@@ -12,14 +12,12 @@ use Slim\Views\Twig;
  */
 
 class ThemesAction extends AbstractAction {
-
     /**
      * Récupère tous les thèmes depuis la base de données et les affiche à l’aide de Twig.
     **/
-
     public function __invoke(Request $request, Response $response, array $args) {
         $twig = Twig::fromRequest($request);
-        return $twig->render($response, 'theme.html.twig', [
+        return $twig->render($response, 'theme/index.html.twig', [
             'themes' => Theme::all()
         ]);
     }

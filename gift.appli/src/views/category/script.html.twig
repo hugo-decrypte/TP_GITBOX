@@ -1,0 +1,24 @@
+<script>
+    // Gère l'affichage de la bonne catégorie
+    document.querySelectorAll('.category-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-target');
+
+            // Cacher toutes les divs de catégories
+            document.querySelectorAll('.category-details').forEach(div => div.classList.add('hidden'));
+
+            // Afficher celle qui correspond
+            document.getElementById(targetId).classList.remove('hidden');
+        });
+    });
+
+    // Gère le toggle des prestations pour chaque catégorie
+    document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.id.split('-')[2];
+            document.getElementById(`dropdown-prestations-${id}`).classList.toggle('hidden');
+            document.getElementById(`show-${id}`).classList.toggle('hidden');
+            document.getElementById(`hide-${id}`).classList.toggle('hidden');
+        });
+    });
+</script>

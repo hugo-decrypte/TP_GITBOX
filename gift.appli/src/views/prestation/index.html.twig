@@ -1,0 +1,19 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+
+    <div id="prestation-liste" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {% for prestation in prestations %}
+            <button
+                    data-target="prestation-{{ prestation.id }}"
+                    class="prestations-buttons p-5 m-2 bg-white shadow gap-6 rounded flex justify-between items-center">
+                <p class="font-medium text-gray-800">{{ prestation.libelle|e }}</p>
+                <span class="text-green-600">{{ prestation.tarif|number_format(2, ',', ' ') }} €</span>
+            </button>
+        {% endfor %}
+    </div>
+
+    {% include "prestation/prestation.html.twig" %}
+
+    {% include "prestation/script.html.twig" %}
+{% endblock %}

@@ -11,7 +11,7 @@ use Slim\Views\Twig;
  * Contrôleur chargé d'afficher la liste de toutes les coffrets_types.
  */
 
-class PrestationsListeAction extends AbstractAction {
+class Prestations extends AbstractAction {
 
     /***
      * Récupère toutes les coffrets et les passe au template Twig.
@@ -19,7 +19,7 @@ class PrestationsListeAction extends AbstractAction {
 
     public function __invoke(Request $request, Response $response, array $args) {
         $twig = Twig::fromRequest($request);
-        return $twig->render($response, 'prestation_liste.html.twig', [
+        return $twig->render($response, 'prestation/index.html.twig', [
             'prestations' => Prestation::all()
         ]);
     }
