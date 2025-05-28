@@ -3,6 +3,7 @@
 
 use gift\appli\Controllers\CategoriesAction;
 use gift\appli\Controllers\CoffretsAction;
+use gift\appli\Controllers\CreerCoffretAction;
 use gift\appli\Controllers\HomeAction;
 use gift\appli\Controllers\Prestations;
 use gift\appli\Controllers\ThemesAction;
@@ -19,7 +20,7 @@ return function ($app) {
         ->setName('coffrets');
     $app->get('/prestations', Prestations::class)
         ->setName('prestations');
-    $app->get('/creerCoffret', Prestations::class)
+    $app->get('/creerCoffret', CreerCoffretAction::class)
         ->setName('creerCoffret');
 
 
