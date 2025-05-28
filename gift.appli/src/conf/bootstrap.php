@@ -6,11 +6,17 @@ use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
-Eloquent::init(__DIR__.'/db.ini');
+try {
+    Eloquent::init(__DIR__ . '/db.ini');
+} catch (Exception $e) {
+}
 
-$twig = Twig::create(__DIR__. '/../views',
-    ['cache' => 'path/to/cache-dir',
-        'auto_reload' => true]);
+try {
+    $twig = Twig::create(__DIR__ . '/../views',
+        ['cache' => 'path/to/cache-dir',
+            'auto_reload' => true]);
+} catch (\Twig\Error\LoaderError $e) {
+}
 
 
 $app = AppFactory::create();
