@@ -1,10 +1,11 @@
 <?php
 
 
-use gift\appli\utils\Eloquent;
+use gift\appli\infrastructure\Eloquent;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Twig\Error\LoaderError;
 
 try {
     Eloquent::init(__DIR__ . '/db.ini');
@@ -12,10 +13,10 @@ try {
 }
 
 try {
-    $twig = Twig::create(__DIR__ . '/../views',
+    $twig = Twig::create(__DIR__ . '/../webui/views/',
         ['cache' => 'path/to/cache-dir',
             'auto_reload' => true]);
-} catch (\Twig\Error\LoaderError $e) {
+} catch (LoaderError $e) {
 }
 
 

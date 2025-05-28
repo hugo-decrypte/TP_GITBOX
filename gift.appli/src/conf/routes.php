@@ -1,12 +1,11 @@
 <?php
 
 
-use gift\appli\Controllers\CategoriesAction;
-use gift\appli\Controllers\CoffretsAction;
-use gift\appli\Controllers\HomeAction;
-use gift\appli\Controllers\Prestations;
-use gift\appli\Controllers\ThemesAction;
-
+use gift\appli\webui\actions\CategoriesAction;
+use gift\appli\webui\actions\CoffretsAction;
+use gift\appli\webui\actions\HomeAction;
+use gift\appli\webui\actions\Prestations;
+use gift\appli\webui\actions\ThemesAction;
 
 return function ($app) {
     $app->get('/', HomeAction::class)
@@ -21,7 +20,5 @@ return function ($app) {
         ->setName('prestations');
     $app->get('/creerCoffret', Prestations::class)
         ->setName('creerCoffret');
-
-
     return $app;
 };

@@ -1,9 +1,9 @@
 <?php
 
-namespace gift\appli\Controllers;
+namespace gift\appli\webui\actions;
 
-use gift\appli\models\Categorie;
-use gift\appli\models\Prestation;
+use gift\appli\application_core\domain\entities\Categorie;
+use gift\appli\application_core\domain\entities\Prestation;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;

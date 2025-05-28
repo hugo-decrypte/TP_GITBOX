@@ -1,8 +1,8 @@
 <?php
 
-namespace gift\appli\Controllers;
+namespace gift\appli\webui\actions;
 
-use gift\appli\models\Theme;
+use gift\appli\application_core\domain\entities\Theme;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
