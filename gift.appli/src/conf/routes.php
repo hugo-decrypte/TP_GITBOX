@@ -19,6 +19,9 @@ return function ($app) {
         ->setName('coffrets');
     $app->get('/prestations', Prestations::class)
         ->setName('prestations');
+    $app->get('/creerCoffret', Prestations::class)
+        ->setName('creerCoffret');
+
 
     return $app;
 };
