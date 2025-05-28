@@ -6,6 +6,7 @@ use gift\appli\webui\actions\CoffretsAction;
 use gift\appli\webui\actions\HomeAction;
 use gift\appli\webui\actions\Prestations;
 use gift\appli\webui\actions\ThemesAction;
+use gift\appli\webui\actions\CreerCoffretAction;
 
 return function ($app) {
     $app->get('/', HomeAction::class)
@@ -18,7 +19,7 @@ return function ($app) {
         ->setName('coffrets');
     $app->get('/prestations', Prestations::class)
         ->setName('prestations');
-    $app->get('/creerCoffret', Prestations::class)
+    $app->get('/creerCoffret', CreerCoffretAction::class)
         ->setName('creerCoffret');
     return $app;
 };
