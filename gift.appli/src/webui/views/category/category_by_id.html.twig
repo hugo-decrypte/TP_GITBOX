@@ -18,9 +18,7 @@
                     Prestations pour la catégorie : {{ category.libelle|upper }}
                 </h2>
 
-                {% set prestations_cat = prestations | filter(p => p.cat_id == category.id) %}
-
-                {% if prestations_cat is not empty %}
+                {% if category.prestations is not empty %}
                     <ul class="space-y-3">
                         {% for p in prestations_cat %}
                             <li class="p-4 bg-gray-50 shadow rounded flex justify-between items-center">
