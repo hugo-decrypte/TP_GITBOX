@@ -1,6 +1,6 @@
 <?php
 
-namespace gift\appli\application_core\application\useCases;
+namespace gift\appli\application_core\application\useCases\interfaces;
 
 interface CatalogueServiceInterface {
     public function getCategories(): array;
