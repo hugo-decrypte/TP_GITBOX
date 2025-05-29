@@ -4,6 +4,7 @@ namespace gift\appli\webui\actions;
 
 use gift\appli\application_core\domain\entities\Categorie;
 use gift\appli\application_core\domain\entities\Prestation;
+use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -13,6 +14,11 @@ use Slim\Views\Twig;
  */
 
 class CategoriesAction extends AbstractAction{
+    private CatalogueServiceInterface $catalogueService;
+
+    public function __construct(CatalogueServiceInterface $catalogueService) {
+        $this->catalogueService = $catalogueService;
+    }
 
      /***
       * Récupère toutes les catégories et les passe au template Twig.

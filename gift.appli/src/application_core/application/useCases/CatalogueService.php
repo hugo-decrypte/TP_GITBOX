@@ -3,6 +3,7 @@
 namespace gift\appli\application_core\application\useCases;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
+use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\domain\entities\Categorie;
 use gift\appli\application_core\domain\entities\CoffretType;
 use gift\appli\application_core\domain\entities\Prestation;

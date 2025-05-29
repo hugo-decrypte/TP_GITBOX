@@ -1,11 +1,12 @@
 <?php
 
-namespace gift\appli\Controllers;
+namespace gift\appli\webui\actions;
 
+
+use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
-
 
 
 /**
@@ -13,6 +14,11 @@ use Slim\Views\Twig;
  */
 
 class CreerCoffretAction extends AbstractAction {
+    private CatalogueServiceInterface $catalogueService;
+
+    public function __construct(CatalogueServiceInterface $catalogueService) {
+        $this->catalogueService = $catalogueService;
+    }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
