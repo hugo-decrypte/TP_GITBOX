@@ -1,6 +1,9 @@
 <?php
 
 
+use DI\Container;
+use gift\appli\application_core\application\useCases\CatalogueService;
+use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\infrastructure\Eloquent;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
@@ -19,7 +22,10 @@ try {
 } catch (LoaderError $e) {
 }
 
+$container = new Container();
+$container->set(CatalogueServiceInterface::class, \DI\autowire(CatalogueService::class));
 
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 $app->add(TwigMiddleware::create($app, $twig));
