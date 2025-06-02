@@ -11,4 +11,6 @@ interface CatalogueServiceInterface {
     public function getCoffretById(int $id): array;
     public function getPrestations(): array;
 
+    public function getBox(): array;
+
 }

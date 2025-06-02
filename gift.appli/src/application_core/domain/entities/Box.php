@@ -1,7 +1,8 @@
 <?php
 
-namespace gift\appli\models;
+namespace gift\appli\application_core\domain\entities;
 
+use gift\appli\models\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**

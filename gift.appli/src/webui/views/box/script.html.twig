@@ -1,0 +1,33 @@
+<script>
+    // Gère l'affichage de la bonne box
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.box-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+
+                // Cacher toutes les divs de box
+                document.querySelectorAll('.box-details').forEach(div => div.classList.add('hidden'));
+
+                // Afficher celle qui correspond
+                document.getElementById(targetId).classList.remove('hidden');
+            });
+        });
+
+        // Gère le toggle des prestations pour chaque box
+        document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.id.replace('prestations-btn-', '');
+
+                const dropdown = document.getElementById(`dropdown-prestations-${id}`);
+                const show = document.getElementById(`show-${id}`);
+                const hide = document.getElementById(`hide-${id}`);
+
+                if (dropdown && show && hide) {
+                    dropdown.classList.toggle('hidden');
+                    show.classList.toggle('hidden');
+                    hide.classList.toggle('hidden');
+                }
+            });
+        });
+    });
+</script>

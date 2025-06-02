@@ -4,6 +4,7 @@ namespace gift\appli\application_core\application\useCases;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\application_core\domain\entities\Box;
 use gift\appli\application_core\domain\entities\Categorie;
 use gift\appli\application_core\domain\entities\CoffretType;
 use gift\appli\application_core\domain\entities\Prestation;
@@ -56,7 +57,7 @@ class CatalogueService implements CatalogueServiceInterface {
         try {
             return Theme::with('coffrets.prestations')->get()->toArray();
         } catch (\Throwable $e) {
-            throw new DatabaseException("Erreur lors de la récupération des themes de coffrets.");
+            throw new DatabaseException("Erreur lors de la récupération des themes avec leurs coffrets.");
         }
     }
 
@@ -65,6 +66,14 @@ class CatalogueService implements CatalogueServiceInterface {
             return CoffretType::where('id', $id)->first()->toArray();
         } catch (\Throwable $e) {
             throw new DatabaseException("Erreur lors de la récupération d'un coffret par son identidiant.");
+        }
+    }
+
+    public function getBox(): array {
+        try {
+            return Box::with("prestations")->get()->toArray();
+        } catch (\Throwable $e) {
+            throw new DatabaseException("Erreur lors de la récupération des box.");
         }
     }
 }
