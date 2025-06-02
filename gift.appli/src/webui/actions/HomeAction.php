@@ -1,22 +1,21 @@
 <?php
 
-namespace gift\appli\Controllers;
+namespace gift\appli\webui\actions;
 
-use gift\appli\Controllers\AbstractAction;
-use gift\appli\models\Categorie;
+use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
-
 
 /**
  * Contrôleur de la page d'accueil de l'application.
  */
-
 class HomeAction extends AbstractAction {
+    private CatalogueServiceInterface $catalogueService;
+
+    public function __construct(CatalogueServiceInterface $catalogueService) {
+        $this->catalogueService = $catalogueService;
+    }
 
     public function __invoke(Request $request, Response $response, array $args)
     {

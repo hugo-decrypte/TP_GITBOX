@@ -6,10 +6,10 @@ session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use gift\appli\infrastructure\Eloquent;
 use gift\appli\models\Categorie;
 use gift\appli\models\CoffretType;
 use gift\appli\models\Prestation;
-use gift\appli\utils\Eloquent;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 Eloquent::init('../conf/db.ini');
