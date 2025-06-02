@@ -15,7 +15,15 @@ class CatalogueService implements CatalogueServiceInterface {
         try {
             return Categorie::all()->toArray();
         } catch (\Throwable $e) {
-            throw new DatabaseException("Erreur lors de la récupération de la catégorie.");
+            throw new DatabaseException("Erreur lors de la récupération des catégories.");
+        }
+    }
+
+    public function getPrestations(): array {
+        try {
+            throw new DatabaseException("Erreur lors de la récupération des prestations.");
+        } catch (\Throwable $e) {
+            throw new DatabaseException("Erreur lors de la récupération des prestations.");
         }
     }
 
