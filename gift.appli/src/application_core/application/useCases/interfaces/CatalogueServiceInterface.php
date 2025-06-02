@@ -9,5 +9,6 @@ interface CatalogueServiceInterface {
     public function getPrestationsbyCategorie(int $categ_id):array;
     public function getThemesCoffrets(): array;
     public function getCoffretById(int $id): array;
+    public function getPrestations(): array;
 
 }

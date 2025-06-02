@@ -27,7 +27,7 @@ class ThemesAction extends AbstractAction {
         try {
             $themes = $this->catalogueService->getThemesCoffrets();
         } catch (DatabaseException $e) {
-            return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayez plus tard."]);
+            return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayer plus tard."]);
         }
 
         return $twig->render($response, 'theme/index.html.twig', [

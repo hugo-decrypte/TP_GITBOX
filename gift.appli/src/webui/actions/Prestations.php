@@ -2,8 +2,8 @@
 
 namespace gift\appli\webui\actions;
 
+use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
-use gift\appli\application_core\domain\entities\Prestation;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -25,8 +25,15 @@ class Prestations extends AbstractAction {
 
     public function __invoke(Request $request, Response $response, array $args) {
         $twig = Twig::fromRequest($request);
+
+        try {
+            $prestations = $this->catalogueService->getPrestations();
+        } catch (DatabaseException $e) {
+            return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayer plus tard."]);
+        }
+
         return $twig->render($response, 'prestation/index.html.twig', [
-            'prestations' => Prestation::all()
+            'prestations' => $prestations
         ]);
     }
 }
