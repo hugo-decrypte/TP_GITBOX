@@ -1,6 +1,6 @@
 <div id="coffrets-container" class="space-y-6 mt-6">
-    {% for coffret in coffrets %}
-        <div id="coffret-{{ coffret.id }}" class="coffret-details hidden bg-white shadow rounded p-6">
+    {% for coffret in theme.coffrets %}
+        <div id="coffret-{{ coffret.id }}" class="coffret-details bg-white shadow rounded p-6">
             <h1 class="text-2xl font-bold text-purple-700 mb-4">{{ coffret.libelle|upper }}</h1>
 
             <h3 class="text-lg font-semibold text-gray-700 mb-2">Description :</h3>
@@ -33,33 +33,3 @@
         </div>
     {% endfor %}
 </div>
-
-<script>
-    // Affichage du coffret sélectionné
-    document.querySelectorAll('.coffret-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-target');
-
-            // Masquer toutes les divs
-            document.querySelectorAll('.coffret-details').forEach(div => div.classList.add('hidden'));
-
-            // Afficher celle sélectionnée
-            const target = document.getElementById(targetId);
-            if (target) {
-                target.classList.remove('hidden');
-            } else {
-                console.warn("Div introuvable :", targetId);
-            }
-        });
-    });
-
-    // Toggle des prestations
-    document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = btn.id.split('-')[2];
-            document.getElementById(`dropdown-prestations-${id}`).classList.toggle('hidden');
-            document.getElementById(`show-${id}`).classList.toggle('hidden');
-            document.getElementById(`hide-${id}`).classList.toggle('hidden');
-        });
-    });
-</script>
