@@ -29,7 +29,6 @@ class Prestations extends AbstractAction {
         try {
             $prestations = $this->catalogueService->getPrestations();
         } catch (DatabaseException $e) {
-            print(getcwd());
             return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayer plus tard."]);
         }
 
