@@ -1,0 +1,47 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Créer une nouvelle Box</h1>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Choisissez une option :</label>
+                <select id="boxType" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">-- Sélectionnez une option --</option>
+                    <option value="custom">Créer une Box personnalisée</option>
+                    <option value="template">Créer une Box à partir d'un modèle</option>
+                </select>
+            </div>
+
+            <!-- CBox personnalisée, caché par défaut -->
+            <div id="customBoxForm" class="hidden">
+                <h2 class="text-xl font-semibold mt-4">Créer une Box personnalisée</h2>
+                <p class="text-gray-600">Formulaire pour créer une box personnalisée...</p>
+            </div>
+
+            <!-- Box à partir d'un coffret type, caché par défaut -->
+            <div id="templateBoxForm" class="hidden">
+                <h2 class="text-xl font-semibold mt-4">Créer une Box à partir d'un modèle</h2>
+                <p class="text-gray-600">Sélectionnez un modèle pour créer votre box...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('boxType').addEventListener('change', function() {
+            const PersoBoxForm = document.getElementById('customBoxForm');
+            const ModeleBoxForm = document.getElementById('templateBoxForm');
+
+            PersoBoxForm.classList.add('hidden');
+            ModeleBoxForm.classList.add('hidden');
+
+            // on montre la démarche à suivre en fonction du choix de l'utilisateur 
+            if (this.value === 'perso') {
+                PersoBoxForm.classList.remove('hidden');
+            } else if (this.value === 'modele') {
+                ModeleBoxForm.classList.remove('hidden');
+            }
+        });
+    </script>
+{% endblock %}
