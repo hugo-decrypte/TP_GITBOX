@@ -2,6 +2,7 @@
 
 namespace gift\appli\webui\actions;
 
+use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\domain\entities\Theme;
 use Slim\Psr7\Request;
@@ -23,8 +24,14 @@ class ThemesAction extends AbstractAction {
     **/
     public function __invoke(Request $request, Response $response, array $args) {
         $twig = Twig::fromRequest($request);
+        try {
+            $themes = $this->catalogueService->getThemesCoffrets();
+        } catch (DatabaseException $e) {
+            return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayez plus tard."]);
+        }
+
         return $twig->render($response, 'theme/index.html.twig', [
-            'themes' => Theme::all()
+            'themes' => $themes
         ]);
     }
 }
