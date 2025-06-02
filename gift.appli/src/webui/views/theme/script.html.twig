@@ -1,4 +1,6 @@
 <script>
+
+    // Toggle des themes
     document.querySelectorAll(".themes-buttons").forEach(btn => {
         btn.addEventListener("click", function(){
             document.querySelectorAll(".themes-details").forEach(el => {
@@ -6,6 +8,37 @@
             })
             const targetId = btn.getAttribute("data-target");
             document.getElementById(targetId).classList.remove("hidden");
+        });
+    });
+
+    // Toggle des coffrets
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.coffret-button');
+        const coffrets = document.querySelectorAll('[id^="coffret-"]');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-coffret-id');
+
+                // Masquer tous les coffrets
+                coffrets.forEach(coffret => coffret.classList.add('hidden'));
+
+                // Afficher le coffret correspondant
+                const selected = document.getElementById(`coffret-${id}`);
+                if (selected) {
+                    selected.classList.remove('hidden');
+                }
+            });
+        });
+    });
+
+    // Toggle des prestations
+    document.querySelectorAll('[id^="prestations-btn-"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.id.split('-')[2];
+            document.getElementById(`dropdown-prestations-${id}`).classList.toggle('hidden');
+            document.getElementById(`show-${id}`).classList.toggle('hidden');
+            document.getElementById(`hide-${id}`).classList.toggle('hidden');
         });
     });
 </script>

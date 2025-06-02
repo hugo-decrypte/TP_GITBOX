@@ -46,7 +46,7 @@ class CatalogueService implements CatalogueServiceInterface {
 
     public function getThemesCoffrets(): array {
         try {
-            return Theme::with('coffrets')->get()->toArray();
+            return Theme::with('coffrets.prestations')->get()->toArray();
         } catch (\Throwable $e) {
             throw new DatabaseException("Erreur lors de la récupération des themes de coffrets.");
         }
