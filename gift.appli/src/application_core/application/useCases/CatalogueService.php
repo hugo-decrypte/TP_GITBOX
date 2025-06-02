@@ -13,7 +13,7 @@ class CatalogueService implements CatalogueServiceInterface {
 
     public function getCategories(): array {
         try {
-            return Categorie::all()->toArray();
+            return Categorie::with("prestations")->get()->toArray();
         } catch (\Throwable $e) {
             throw new DatabaseException("Erreur lors de la récupération des catégoriess.");
         }

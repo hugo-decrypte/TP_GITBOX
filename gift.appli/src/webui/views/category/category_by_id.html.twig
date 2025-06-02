@@ -20,7 +20,7 @@
 
                 {% if category.prestations is not empty %}
                     <ul class="space-y-3">
-                        {% for p in prestations_cat %}
+                        {% for p in category.prestations %}
                             <li class="p-4 bg-gray-50 shadow rounded flex justify-between items-center">
                                 <a href="{{ url_for("prestations") }}#{{ p.id }}" class="font-medium text-gray-800">{{ p.libelle|e }}</a>
                                 <span class="text-green-600">{{ p.tarif|number_format(2, ',', ' ') }} €</span>
