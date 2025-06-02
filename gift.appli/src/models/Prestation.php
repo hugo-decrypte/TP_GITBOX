@@ -27,6 +27,16 @@ class Prestation extends Model {
 
 
     /**
+     * Relation Many-to-Many avec le modèle Box.
+     * Une prestation peut appartenir à plusieurs boxes.
+     */
+    public function boxes()
+    {
+        return $this->belongsToMany(Box::class, 'box2presta', 'presta_id', 'box_id');
+    }
+
+
+    /**
      * Relation Eloquent Many-to-Many vers les types de coffret.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
