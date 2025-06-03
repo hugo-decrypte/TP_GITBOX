@@ -47,6 +47,13 @@
                 {% else %}
                     <p class="text-gray-500 italic">Aucune prestation associée à cette box.</p>
                 {% endif %}
+
+                <div class="mt-4">
+                    <a href="{{ url_for('prestations') }}" class="inline-block bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">
+                        Ajouter une prestation
+                    </a>
+                </div>
+
             </div>
         </div>
     {% endfor %}
