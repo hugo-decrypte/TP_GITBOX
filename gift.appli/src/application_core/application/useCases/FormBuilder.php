@@ -4,7 +4,7 @@ namespace gift\appli\application_core\application\useCases;
 
 use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
 
-class FormBuilder implements interfaces\FormBuilderInterface {
+class FormBuilder implements FormBuilderInterface {
     public function buildCreerBoxPersoForm(): array {
         return [
             'actionRoute' => 'post_creer_box_perso',
@@ -23,6 +23,15 @@ class FormBuilder implements interfaces\FormBuilderInterface {
                     'placeholder' => 'Description de la box'
                 ]
             ],
+            'selects' => []
+        ];
+    }
+
+    public function buildCreerBoxModelForm() : array{
+        return [
+            'actionRoute' => 'post_creer_box_model',
+            'submit_button' => "",
+            'inputs' => [],
             'selects' => []
         ];
     }
