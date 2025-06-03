@@ -9,7 +9,7 @@ use MongoDB\Driver\Exception\AuthenticationException;
 class AuthnService implements AuthnServiceInterface {
     public function register($id, $mdp)
     {
-        if($this->verifyCredentials($id, $mdp)) {
+        if(($this->verifyCredentials($id, $mdp))&&(User::where('id','=', $id)->count() == 0)) {
             $mdpHash = password_hash($mdp);
             $user = new User();
             $user->id = $id;
@@ -22,12 +22,16 @@ class AuthnService implements AuthnServiceInterface {
 
     public function verifyCredentials($id, $mdp): bool
     {
-        if(User::where('id','=', $id)->count() == 0) {
-            //l'utilisater n'existe pas
-            return true;
+        $user = User::where('id','=', $id)->first();
+        if($user == null) {
+            throw new AuthenticationException("Erreur lors de l'authentification.");
         } else {
-            //l'utilisateur existe
-            return false;
+            $mdpHash = password_hash($mdp);
+            if ($mdpHash != $user->mdp) {
+                throw new AuthenticationException("Erreur lors de l'authentification.");
+            } else {
+                return true;
+            }
         }
     }
 }
