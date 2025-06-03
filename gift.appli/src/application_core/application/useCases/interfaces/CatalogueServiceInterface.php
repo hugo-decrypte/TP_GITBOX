@@ -10,6 +10,7 @@ interface CatalogueServiceInterface {
     public function getThemesCoffrets(): array;
     public function getCoffretById(int $id): array;
     public function getPrestations(): array;
+    public function creerBoxVide(string $createurId, string $libelle, string $description) : array;
 
     public function getBox(): array;
 

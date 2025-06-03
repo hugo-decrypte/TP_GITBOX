@@ -4,6 +4,8 @@ namespace gift\appli\webui\actions;
 
 
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\models\Box;
+use Illuminate\Support\Str;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;

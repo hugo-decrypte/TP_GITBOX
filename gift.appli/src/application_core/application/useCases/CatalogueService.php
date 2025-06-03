@@ -2,6 +2,7 @@
 
 namespace gift\appli\application_core\application\useCases;
 
+use Faker\Core\Uuid;
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\domain\entities\Box;
@@ -9,6 +10,7 @@ use gift\appli\application_core\domain\entities\Categorie;
 use gift\appli\application_core\domain\entities\CoffretType;
 use gift\appli\application_core\domain\entities\Prestation;
 use gift\appli\application_core\domain\entities\Theme;
+use Illuminate\Support\Str;
 
 class CatalogueService implements CatalogueServiceInterface {
 
@@ -76,4 +78,27 @@ class CatalogueService implements CatalogueServiceInterface {
             throw new DatabaseException("Erreur lors de la récupération des box.");
         }
     }
+
+    public function creerBoxVide(string $createurId, string $libelle, string $description): array
+    {
+        try {
+            $box = new Box();
+            $box->id = \Ramsey\Uuid\Uuid::uuid4()->toString();
+            $box->token = \Ramsey\Uuid\Uuid::uuid4()->toString();
+            $box->libelle = $libelle;
+            $box->description = $description;
+            $box->montant = 0.00;
+            $box->kdo = false;
+            $box->message_kdo = 'Message par défaut pour la box vide';
+            $box->statut = 0;
+            $box->createur_id = $createurId;
+
+            $box->save();
+
+            return $box->toArray();
+        } catch (\Exception $e) {
+            throw new DatabaseException("Erreur lors de la création de la box vide: " . $e->getMessage());
+        }
+    }
+
 }

@@ -7,41 +7,19 @@
         <div class="bg-white shadow-md rounded-lg p-6">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2">Choisissez une option :</label>
-                <select id="boxType" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    <option value="">-- Sélectionnez une option --</option>
-                    <option value="custom">Créer une Box personnalisée</option>
-                    <option value="template">Créer une Box à partir d'un modèle</option>
-                </select>
-            </div>
-
-            <!-- CBox personnalisée, caché par défaut -->
-            <div id="customBoxForm" class="hidden">
-                <h2 class="text-xl font-semibold mt-4">Créer une Box personnalisée</h2>
-                <p class="text-gray-600">Formulaire pour créer une box personnalisée...</p>
-            </div>
-
-            <!-- Box à partir d'un coffret type, caché par défaut -->
-            <div id="templateBoxForm" class="hidden">
-                <h2 class="text-xl font-semibold mt-4">Créer une Box à partir d'un modèle</h2>
-                <p class="text-gray-600">Sélectionnez un modèle pour créer votre box...</p>
+                <div class="flex space-x-4">
+                    <a href="{{url_for('creer_box_perso') }}" class="flex-1">
+                        <button class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded transform transition-transform duration-300 hover:scale-105">
+                            Créer une Box <br>Personnalisée
+                        </button>
+                    </a>
+                    <a href="{{url_for('creer_box_modele') }}" class="flex-1">
+                        <button class="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-bold py-2 px-4 rounded transform transition-transform duration-300 hover:scale-105">
+                            Créer une Box à partir d'un Coffret-type
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('boxType').addEventListener('change', function() {
-            const PersoBoxForm = document.getElementById('customBoxForm');
-            const ModeleBoxForm = document.getElementById('templateBoxForm');
-
-            PersoBoxForm.classList.add('hidden');
-            ModeleBoxForm.classList.add('hidden');
-
-            // on montre la démarche à suivre en fonction du choix de l'utilisateur 
-            if (this.value === 'perso') {
-                PersoBoxForm.classList.remove('hidden');
-            } else if (this.value === 'modele') {
-                ModeleBoxForm.classList.remove('hidden');
-            }
-        });
-    </script>
 {% endblock %}
