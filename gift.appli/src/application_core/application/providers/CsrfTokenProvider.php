@@ -1,4 +1,6 @@
 <?php
+namespace gift\appli\application_core\application\providers;
+use Ramsey\Uuid\Uuid;
 
 class CsrfTokenProvider {
 
@@ -6,16 +8,9 @@ class CsrfTokenProvider {
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-
-        $length = 32;
-        $stringSpace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $pieces = [];
-        $max = mb_strlen($stringSpace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++ $i) {
-            $pieces[] = $stringSpace[random_int(0, $max)];
-        }
-        $token = implode('', $pieces);
+        $token = Uuid::uuid4()->toString();
         $_SESSION['csrf_token'] = $token;
+
         return $token;
     }
 
@@ -28,7 +23,7 @@ class CsrfTokenProvider {
     }
 
     /*
-        <input type="hidden" name="csrf_token" value="{{resultat de la fonction generate de CsrfTokenProvider}}">
+        <input type="hidden" name="csrf_token" value="{{ token }}">
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
