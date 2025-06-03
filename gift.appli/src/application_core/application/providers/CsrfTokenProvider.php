@@ -1,10 +1,11 @@
 <?php
 namespace gift\appli\application_core\application\providers;
+use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
 use Ramsey\Uuid\Uuid;
 
-class CsrfTokenProvider {
+class CsrfTokenProvider implements CsrfTokenProviderInterface{
 
-    static function generate(){
+    static function generate() : string{
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
@@ -14,7 +15,7 @@ class CsrfTokenProvider {
         return $token;
     }
 
-    static function check($token){
+    static function check($token) : bool{
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }

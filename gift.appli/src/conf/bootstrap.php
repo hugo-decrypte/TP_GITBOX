@@ -2,6 +2,8 @@
 
 
 use DI\Container;
+use gift\appli\application_core\application\providers\CsrfTokenProvider;
+use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
 use gift\appli\application_core\application\useCases\CatalogueService;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\infrastructure\Eloquent;
@@ -24,6 +26,7 @@ try {
 
 $container = new Container();
 $container->set(CatalogueServiceInterface::class, \DI\autowire(CatalogueService::class));
+$container->set(CsrfTokenProviderInterface::class, \DI\autowire(CsrfTokenProvider::class));
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
