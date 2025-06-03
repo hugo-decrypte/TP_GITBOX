@@ -6,6 +6,7 @@ use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 /**
@@ -36,7 +37,14 @@ class PostCreerBoxPersoAction extends AbstractAction
         // Utiliser le service pour créer une box vide avec les données du formulaire
         $this->catalogueService->creerBoxVide($createurId, $libelle, $description);
 
-        $twig = Twig::fromRequest($request);
-        return $twig->render($response, 'home/index.html.twig');
+        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
+
+        // Générer l'URL depuis le nom de route
+        $url = $routeParser->urlFor('myBox');
+
+        // Rediriger
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
     }
 }
