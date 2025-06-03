@@ -1,0 +1,52 @@
+{% extends "base/base.html.twig" %}
+{% block body %}
+    {% include "form/csrf.html.twig" %}
+    <div class="mx-auto px-4 py-8 w-full md:w-3/4">
+        <form action="{{ url_for(form.actionRoute) }}" method="post" class="bg-white shadow-md rounded-lg p-6 w-full">
+            {% for input in form.inputs %}
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ input.name }}">
+                        {{ input.label }}
+                    </label>
+                    {% if input.type == "textarea" %}
+                        <textarea
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="{{ input.name }}"
+                                name="{{ input.name }}"
+                                {% if input.placeholder %}placeholder="{{ input.placeholder }}"{% endif %}
+                                rows="4"
+                        >{{ input.value|default('') }}</textarea>
+                    {% else %}
+                        <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="{{ input.name }}"
+                                name="{{ input.name }}"
+                                type="{{ input.type }}"
+                                value="{{ input.value|default('') }}"
+                                {% if input.placeholder %}placeholder="{{ input.placeholder }}"{% endif %}
+                        />
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+            {% for select in form.selects %}
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ select.name }}">
+                    {{ select.label }}
+                </label>
+                <select class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ select.name }}" name="{{ select.name }}">
+                    {% for option in select.options %}
+                        <option value="{{ option.value }}">{{ option.label }}</option>
+                    {% endfor %}
+                </select>
+            {% endfor %}
+
+
+            <div class="mb-6">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    {{ form.submit_button }}
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
