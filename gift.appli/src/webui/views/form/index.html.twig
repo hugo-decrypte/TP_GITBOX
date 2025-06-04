@@ -47,6 +47,12 @@
                     {{ form.submit_button }}
                 </button>
             </div>
+
+            {% for link in form.links %}
+                <a href="{{ url_for(link.route) }}" class="hover:text-blue-300 text-blue-500 font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+                    {{ link.label }}
+                </a>
+            {% endfor %}
         </form>
     </div>
 {% endblock %}
