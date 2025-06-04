@@ -14,6 +14,7 @@ use gift\appli\webui\actions\Register\GetCreerCompteAction;
 use gift\appli\webui\actions\Register\PostCreerCompteAction;
 use gift\appli\webui\actions\SignIn\GetSigninAction;
 use gift\appli\webui\actions\SignIn\PostSigninAction;
+use gift\appli\webui\actions\SignIn\GetSignOutAction;
 use gift\appli\webui\actions\ValidateBoxAction;
 
 return function ($app) {
@@ -43,7 +44,8 @@ return function ($app) {
         ->setName('signin');
     $app->get('/creer-compte', GetCreerCompteAction::class)
         ->setName('creer_compte');
-
+    $app->get('/signout', GetSignOutAction::class)
+        ->setName('signout');
 
     //-----------POST-----------//
     $app->post('/creer-box-perso', PostCreerBoxPersoAction::class)

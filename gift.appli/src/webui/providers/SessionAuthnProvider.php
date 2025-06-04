@@ -28,4 +28,8 @@ class SessionAuthnProvider implements AuthnProviderInterface {
             $_SESSION["email"] = $email;
         }
     }
+
+    public function signout(): void {
+        session_unset();
+    }
 }
