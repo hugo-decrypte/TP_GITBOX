@@ -1,6 +1,5 @@
 <?php
 
-use gift\appli\webui\actions\CoffretsAction;
 use gift\appli\webui\actions\CreerBox\GetCreerBoxModeleAction;
 use gift\appli\webui\actions\CreerBox\GetCreerBoxPersoAction;
 use gift\appli\webui\actions\CreerBox\GetCreerCoffretAction;
