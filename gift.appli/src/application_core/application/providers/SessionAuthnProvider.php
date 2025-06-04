@@ -11,7 +11,7 @@ class SessionAuthnProvider implements AuthnProviderInterface {
     {
         if (isset($_SESSION["email"])) {
             $id = $_SESSION["email"];
-            return User::where('id', '=', $id)->toArray();
+            return User::where('user_id', '=', $id)->toArray();
         } else {
             return [];
         }
