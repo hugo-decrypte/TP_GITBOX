@@ -124,4 +124,15 @@ class CatalogueService implements CatalogueServiceInterface {
 
     }
 
+    public function validateBox(String $id)
+    {
+        $box = Box::find($id);
+
+        if ($box) {
+            $box->statut = 1;
+            $box->save();
+        } else {
+            throw new \RuntimeException("Box non trouvée.");
+        }
+    }
 }
