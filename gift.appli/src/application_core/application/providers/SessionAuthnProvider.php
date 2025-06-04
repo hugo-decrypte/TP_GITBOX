@@ -1,10 +1,10 @@
 <?php
 
-namespace gift\appli\application_core\application\useCases;
+namespace gift\appli\application_core\application\providers;
 
-use gift\appli\application_core\application\useCases\interfaces\AuthnProviderInterface;
+use gift\appli\application_core\application\providers\interfaces\AuthnProviderInterface;
+use gift\appli\application_core\application\useCases\AuthnService;
 use gift\appli\application_core\domain\entities\User;
-use MongoDB\Driver\Exception\AuthenticationException;
 
 class SessionAuthnProvider implements AuthnProviderInterface {
     public function getSignedInUser(): array

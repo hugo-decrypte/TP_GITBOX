@@ -1,5 +1,7 @@
 <?php
 
+namespace gift\appli\application_core\application\useCases;
+
 class CsrfTokenProvider {
 
     static function generate(){
