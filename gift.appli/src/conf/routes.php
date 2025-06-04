@@ -14,6 +14,7 @@ use gift\appli\webui\actions\Register\GetCreerCompteAction;
 use gift\appli\webui\actions\Register\PostCreerCompteAction;
 use gift\appli\webui\actions\SignIn\GetSigninAction;
 use gift\appli\webui\actions\SignIn\PostSigninAction;
+use gift\appli\webui\actions\ValidateBoxAction;
 
 return function ($app) {
 
@@ -43,6 +44,7 @@ return function ($app) {
     $app->get('/creer-compte', GetCreerCompteAction::class)
         ->setName('creer_compte');
 
+
     //-----------POST-----------//
     $app->post('/creer-box-perso', PostCreerBoxPersoAction::class)
         ->setName('post_creer_box_perso');
@@ -52,6 +54,8 @@ return function ($app) {
         ->setName('prestations');
     $app->post('/creer-compte', PostCreerCompteAction::class)
         ->setName('post_creer_compte');
+    $app->post('/mes-box', ValidateBoxAction::class)
+        ->setName("myBox");
 
     return $app;
 };

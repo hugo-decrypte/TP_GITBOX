@@ -7,11 +7,15 @@
             {% for box in boxes %}
                 {% if box.statut == 0 %}
                     <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
-                        <button
-                                data-target="box-{{ box.id }}"
-                                class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
+                        <button id="validate-box-{{ box.id }}" class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
                             {{ box.libelle }}
                         </button>
+                        <form method="post" action="{{ url_for('myBox') }}">
+                            <input type="hidden" name="id" value="{{ box.id }}">
+                            <button type="submit" class="box-button pr-4 pl-4 text-white bg-green-600 hover:bg-green-800">
+                                Valider
+                            </button>
+                        </form>
                     </div>
                 {% endif %}
             {% else %}
@@ -26,9 +30,7 @@
                 {% for box in boxes %}
                     {% if box.statut != 0 %}
                         <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
-                            <button
-                                    data-target="box-{{ box.id }}"
-                                    class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
+                            <button data-target="box-{{ box.id }}" class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
                                 {{ box.libelle }}
                             </button>
                         </div>
