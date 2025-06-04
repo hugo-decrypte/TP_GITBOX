@@ -1,22 +1,43 @@
 {% extends "base/base.html.twig" %}
 
 {% block body %}
-    <div class="mb-6">
-        <h2 class="text-xl font-semibold text-gray-800 mb-4">Mes Box :</h2>
+    <div class="mb-6 p-5 mt-5">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Liste des Box non validées :</h2>
             {% for box in boxes %}
-                <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
-                    <button
-                            data-target="box-{{ box.id }}"
-                            class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
-                        {{ box.libelle }}
-                    </button>
-                </div>
+                {% if box.statut == 0 %}
+                    <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
+                        <button
+                                data-target="box-{{ box.id }}"
+                                class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
+                            {{ box.libelle }}
+                        </button>
+                    </div>
+                {% endif %}
             {% else %}
                 <p class="text-gray-500 col-span-full text-center">Aucune box disponible.</p>
             {% endfor %}
         </div>
     </div>
+
+    <div class="mb-6 p-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Liste des Box validées :</h2>
+                {% for box in boxes %}
+                    {% if box.statut != 0 %}
+                        <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
+                            <button
+                                    data-target="box-{{ box.id }}"
+                                    class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
+                                {{ box.libelle }}
+                            </button>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <p class="text-gray-500 col-span-full text-center">Aucune box disponible.</p>
+                {% endfor %}
+            </div>
+        </div>
 
     {% include "box/box_by_id.html.twig" %}
     {% include "box/script.html.twig" %}
