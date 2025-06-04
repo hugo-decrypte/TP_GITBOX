@@ -5,16 +5,15 @@ namespace gift\appli\application_core\application\useCases;
 use gift\appli\application_core\application\useCases\interfaces\AuthnServiceInterface;
 use gift\appli\application_core\domain\entities\User;
 use MongoDB\Driver\Exception\AuthenticationException;
-use function Symfony\Component\Clock\now;
 
 class AuthnService implements AuthnServiceInterface {
-    public function register($id, $mdp): array
+    public function register($email, $mdp) : array
     {
-        if(User::where('user_id','=', $id)->count() == 0) {
+        if(User::where('id','=', $email)->count() == 0) {
             $mdpHash = password_hash($mdp, PASSWORD_BCRYPT);
             $user = new User();
             $user->id = \Ramsey\Uuid\Uuid::uuid4()->toString();
-            $user->user_id = $id;
+            $user->user_id = $email;
             $user->password = $mdpHash;
             $user->save();
             return $user->toArray();
@@ -23,9 +22,8 @@ class AuthnService implements AuthnServiceInterface {
         }
     }
 
-    public function verifyCredentials($id, $mdp): bool
-    {
-        $user = User::where('user_id','=', $id)->first();
+    public function verifyCredentials($email, $mdp): bool {
+        $user = User::where('user_id','=', $email)->first();
         if($user == null) {
             throw new AuthenticationException("TEMPORAIRE A SUPPRIMER. Utilisateur inexistant.");
             //throw new AuthenticationException("Erreur lors de l'authentification.");

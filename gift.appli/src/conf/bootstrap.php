@@ -2,17 +2,23 @@
 
 
 use DI\Container;
-use gift\appli\application_core\application\providers\CsrfTokenProvider;
-use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
+use gift\appli\application_core\application\useCases\AuthnService;
 use gift\appli\application_core\application\useCases\CatalogueService;
 use gift\appli\application_core\application\useCases\FormBuilder;
+use gift\appli\application_core\application\useCases\interfaces\AuthnServiceInterface;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
 use gift\appli\infrastructure\Eloquent;
+use gift\appli\webui\providers\CsrfTokenProvider;
+use gift\appli\webui\providers\interfaces\AuthnProviderInterface;
+use gift\appli\webui\providers\interfaces\CsrfTokenProviderInterface;
+use gift\appli\webui\providers\SessionAuthnProvider;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 use Twig\Error\LoaderError;
+
+session_start();
 
 try {
     Eloquent::init(__DIR__ . '/db.ini');
@@ -30,6 +36,8 @@ $container = new Container();
 $container->set(CatalogueServiceInterface::class, \DI\autowire(CatalogueService::class));
 $container->set(FormBuilderInterface::class, \DI\autowire(FormBuilder::class));
 $container->set(CsrfTokenProviderInterface::class, \DI\autowire(CsrfTokenProvider::class));
+$container->set(AuthnProviderInterface::class, \DI\autowire(SessionAuthnProvider::class));
+$container->set(AuthnServiceInterface::class, \DI\autowire(AuthnService::class));
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();

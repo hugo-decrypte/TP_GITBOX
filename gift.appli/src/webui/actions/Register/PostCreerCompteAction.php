@@ -8,6 +8,7 @@ use gift\appli\webui\actions\Abstract\AbstractAction;
 use MongoDB\Driver\Exception\AuthenticationException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 class PostCreerCompteAction extends AbstractAction {
@@ -27,6 +28,14 @@ class PostCreerCompteAction extends AbstractAction {
         } catch(AuthenticationException $e) {
             return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => $e->getMessage()]);
         }
-        return $twig->render($response, 'home/index.html.twig');
+
+
+        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
+        // Générer l'URL depuis le nom de route
+        $url = $routeParser->urlFor('signin');
+        // Rediriger
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
     }
 }
