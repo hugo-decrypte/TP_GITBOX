@@ -1,6 +1,5 @@
 <?php
 
-use gift\appli\webui\actions\CoffretsAction;
 use gift\appli\webui\actions\CreerBox\GetCreerBoxModeleAction;
 use gift\appli\webui\actions\CreerBox\GetCreerBoxPersoAction;
 use gift\appli\webui\actions\CreerBox\GetCreerCoffretAction;
@@ -10,6 +9,7 @@ use gift\appli\webui\actions\GetHomeAction;
 use gift\appli\webui\actions\GetMyBoxAction;
 use gift\appli\webui\actions\GetThemesAction;
 use gift\appli\webui\actions\Prestations\GetPrestationsAction;
+use gift\appli\webui\actions\Prestations\PostAjouterPrestationBoxAction;
 use gift\appli\webui\actions\Register\GetCreerCompteAction;
 use gift\appli\webui\actions\Register\PostCreerCompteAction;
 use gift\appli\webui\actions\SignIn\GetSigninAction;
