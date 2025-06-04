@@ -5,6 +5,11 @@
         </a>
 
         <div class="flex items-center space-x-4">
+            {% if user %}
+                <p>👤 {{ user.user_id }}</p>
+            {% else %}
+                <p>Aucun utilisateur connecté</p>
+            {% endif %}
             <div class="relative" x-data="{ open: false }">
                 <a href="{{ url_for('CreerCoffret') }}" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition flex items-center justify-between">
                     <span>Créer une box</span>
@@ -24,8 +29,12 @@
                     <a href="#" class="block px-4 py-2 hover:bg-gray-100">Mon profil</a>
                     <a href="{{ url_for("myBox") }}" class="block px-4 py-2 hover:bg-gray-100">Mes coffrets</a>
                     <div class="border-t my-1"></div>
-                    <a href="signin" class="block px-4 py-2 text-red-600 hover:bg-red-100">Connexion</a>
-                    <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-100">Déconnexion</a>
+                    {% if user %}
+                        <a href="{{ url_for("signout") }}" class="block px-4 py-2 text-red-600 hover:bg-red-100">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ url_for("signin") }}" class="block px-4 py-2 text-red-600 hover:bg-red-100">Connexion</a>
+                        <a href="{{ url_for("creer_compte") }}" class="block px-4 py-2 text-red-600 hover:bg-red-100">S'enregistrer</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -42,6 +42,23 @@ $container->set(AuthnServiceInterface::class, \DI\autowire(AuthnService::class))
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
+
+$app->add(function ($request, $handler) use ($app, $twig) {
+    $container = $app->getContainer();
+
+    /** @var \gift\appli\webui\providers\interfaces\AuthnProviderInterface $authnProvider */
+    $authnProvider = $container->get(AuthnProviderInterface::class);
+
+    // Récupérer l'utilisateur à partir de l'email stocké en session
+    $user = $authnProvider->getSignedInUser();
+
+    // Injecter dans Twig
+    $twig->getEnvironment()->addGlobal('user', $user);
+
+    return $handler->handle($request);
+});
+
+
 $app->add(TwigMiddleware::create($app, $twig));
 $app = (require_once __DIR__ . '/routes.php')($app);
 

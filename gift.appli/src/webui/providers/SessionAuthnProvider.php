@@ -12,14 +12,12 @@ class SessionAuthnProvider implements AuthnProviderInterface {
         $this->authnService = $authnService;
     }
 
-    public function getSignedInUser(): array {
+    public function getSignedInUser(): ?array {
         if (isset($_SESSION["email"])) {
             $email = $_SESSION["email"];
             return User::where('user_id', '=', $email)->first()->toArray();
         } else {
-            return [
-                "user_id" => "Aucun Utilisateur connecté"
-            ];
+            return null;
         }
     }
 
