@@ -1,6 +1,6 @@
 <?php
-namespace gift\appli\application_core\application\providers;
-use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
+namespace gift\appli\webui\providers;
+use gift\appli\webui\providers\interfaces\CsrfTokenProviderInterface;
 use Ramsey\Uuid\Uuid;
 
 class CsrfTokenProvider implements CsrfTokenProviderInterface{

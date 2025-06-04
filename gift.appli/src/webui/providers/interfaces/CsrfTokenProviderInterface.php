@@ -1,6 +1,6 @@
 <?php
 
-namespace gift\appli\application_core\application\providers\interfaces;
+namespace gift\appli\webui\providers\interfaces;
 
 interface CsrfTokenProviderInterface {
     static function generate() : string;
