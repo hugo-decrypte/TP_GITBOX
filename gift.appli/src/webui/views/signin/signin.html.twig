@@ -1,7 +1,8 @@
 {% extends "base/base.html.twig" %}
 
 {% block body %}
-    <form action="{{ url_for('post_signin') }}" method="post" class="bg-white shadow-md rounded-lg p-6">
+    <h1>Se connecter</h1>
+    <form action="{{ url_for('post_signin') }}" method="post" class="bg-white shadow-md rounded-lg p-6 m-4">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                 Email
@@ -21,5 +22,8 @@
                 Se connecter
             </button>
         </div>
+        <a href="{{ url_for('creer_compte') }}" class="hover:text-blue-300 text-blue-500 font-bold py-2 rounded focus:outline-none focus:shadow-outline">
+            Pas encore de compte ? Créez en un dès maintenant !
+        </a>
     </form>
 {% endblock %}

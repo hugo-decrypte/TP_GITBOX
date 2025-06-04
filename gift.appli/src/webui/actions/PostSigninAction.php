@@ -26,6 +26,6 @@ class PostSigninAction extends AbstractAction{
         } catch(AuthenticationException $e) {
             return $twig->render($response, 'error/index.html.twig', ["code" => 500, "message" => "Erreur lors de l'authentification, " . $e->getMessage() . " Veuillez essayer plus tard."]);
         }
-        return $twig->render($response, 'presentation/index.html.twig');
+        return $twig->render($response, 'home/index.html.twig');
     }
 }
