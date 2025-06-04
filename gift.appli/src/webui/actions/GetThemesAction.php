@@ -4,7 +4,7 @@ namespace gift\appli\webui\actions;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
-use gift\appli\application_core\domain\entities\Theme;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -13,7 +13,7 @@ use Slim\Views\Twig;
  * Contrôleur chargé d'afficher la liste des thèmes disponibles.
  */
 
-class ThemesAction extends AbstractAction {
+class GetThemesAction extends AbstractAction {
     private CatalogueServiceInterface $catalogueService;
 
     public function __construct(CatalogueServiceInterface $catalogueService) {

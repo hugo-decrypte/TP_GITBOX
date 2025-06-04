@@ -1,9 +1,10 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\Register;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\AuthnService;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use MongoDB\Driver\Exception\AuthenticationException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;

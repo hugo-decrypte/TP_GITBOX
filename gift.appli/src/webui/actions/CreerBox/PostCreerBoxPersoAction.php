@@ -1,13 +1,12 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\CreerBox;
 
-use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteContext;
-use Slim\Views\Twig;
 
 /**
  * Action chargée de créer une nouvelle box personnalisée vide.

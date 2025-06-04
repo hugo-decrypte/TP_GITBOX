@@ -1,7 +1,8 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\Register;
 
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;

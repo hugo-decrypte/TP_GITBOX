@@ -1,9 +1,10 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\Prestations;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -12,7 +13,8 @@ use Slim\Views\Twig;
  * Contrôleur chargé d'afficher la liste de toutes les coffrets_types.
  */
 
-class PrestationsAction extends AbstractAction {
+
+class GetPrestationsAction extends AbstractAction {
     private CatalogueServiceInterface $catalogueService;
 
     public function __construct(CatalogueServiceInterface $catalogueService) {

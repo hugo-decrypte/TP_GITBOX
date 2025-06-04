@@ -1,8 +1,9 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\Prestations;
 
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\webui\actions\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteContext;

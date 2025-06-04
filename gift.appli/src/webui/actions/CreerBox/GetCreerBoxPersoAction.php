@@ -1,9 +1,10 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\CreerBox;
 
 use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
 use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;

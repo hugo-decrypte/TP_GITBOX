@@ -1,9 +1,10 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\SignIn;
 
 use gift\appli\application_core\application\exceptions\DatabaseException;
 use gift\appli\application_core\application\providers\SessionAuthnProvider;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use MongoDB\Driver\Exception\AuthenticationException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
