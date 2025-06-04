@@ -1,11 +1,11 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\CreerBox;
 
 
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\models\Box;
-use Illuminate\Support\Str;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -15,7 +15,7 @@ use Slim\Views\Twig;
  * Contrôleur de la page d'accueil de l'application.
  */
 
-class CreerCoffretAction extends AbstractAction {
+class GetCreerCoffretAction extends AbstractAction {
     private CatalogueServiceInterface $catalogueService;
 
     public function __construct(CatalogueServiceInterface $catalogueService) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\SignIn;
 
-use gift\appli\application_core\application\useCases\FormBuilder;
 use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
+use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
