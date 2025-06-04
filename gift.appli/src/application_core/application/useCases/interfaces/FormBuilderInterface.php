@@ -4,6 +4,7 @@ namespace gift\appli\application_core\application\useCases\interfaces;
 
 interface FormBuilderInterface {
     public function buildCreerBoxPersoForm(): array;
-
-    public function buildCreerBoxModelForm();
+    public function buildCreerBoxModelForm() : array;
+    public function buildSignInForm(): array;
+    public function buildRegisterForm(): array;
 }
