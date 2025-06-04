@@ -101,4 +101,27 @@ class CatalogueService implements CatalogueServiceInterface {
         }
     }
 
+    /**
+     * Ajoute une prestation à une box.
+     *
+     * @param string $boxId L'ID de la box.
+     * @param string $prestationId L'ID de la prestation.
+     * @param int $quantite La quantité de la prestation.
+     * @return array
+     */
+    public function addPrestationBox(string $boxId, string $prestationId, int $quantite = 1): void
+    {
+        // Trouver la box et la prestation
+        $box = Box::find($boxId);
+        $prestation = Prestation::find($prestationId);
+
+        if ($box && $prestation) {
+            // Attacher la prestation à la box avec la quantité
+            $box->prestations()->attach($prestationId, ['quantite' => $quantite]);
+        } else {
+            throw new \RuntimeException("Box ou Prestation non trouvée.");
+        }
+
+    }
+
 }

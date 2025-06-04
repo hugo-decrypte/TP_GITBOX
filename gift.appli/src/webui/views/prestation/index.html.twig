@@ -11,23 +11,26 @@
                 </button>
                 <button class="plus-button bg-violet-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center absolute top-2 right-2">+</button>
                 <div class="submenu absolute hidden bg-violet-100 text-black shadow-lg rounded p-2 z-10 w-48 max-h-48 overflow-y-auto">
-
-                    <p>Ajouter une prestation</p>
-                    <ul class="list-none p-0 m-0">
-
-                        {% for box in boxes %}
-                            <li class="p-2 hover:bg-gray-200">
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="checkbox" id="box-{{ box.id }}-{{ prestation.id }}" name="box-{{ box.id }}" class="mr-2">
-                                    {{ box.libelle|e }}
-                                </label>
-                            </li>
-                        {% endfor %}
-
-                    </ul>
-                    <button class="mt-2 bg-violet-500 text-white p-1 rounded w-full">
-                        Terminer
-                    </button>
+                    <form action="{{ url_for('prestations') }}" method="POST">
+                        <p>Ajouter une prestation</p>
+                        <ul class="list-none p-0 m-0">
+                            {% for box in boxes %}
+                                <li class="p-2 hover:bg-gray-200">
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="checkbox"
+                                               name="boxes[]"
+                                               value="{{ box.id }}"
+                                               class="mr-2">
+                                        {{ box.libelle|e }}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <input type="hidden" name="prestation_id" value="{{ prestation.id }}">
+                        <button type="submit" class="terminer-button mt-2 bg-violet-500 text-white p-1 rounded w-full">
+                            Terminer
+                        </button>
+                    </form>
                 </div>
             </div>
         {% endfor %}
@@ -68,10 +71,8 @@
         .submenu input[type="checkbox"] {
             margin-right: 0.5rem;
         }
-
         .prestations-buttons {
             margin-right: 2rem;
         }
-
     </style>
 {% endblock %}

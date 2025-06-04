@@ -14,4 +14,5 @@ interface CatalogueServiceInterface {
 
     public function getBox(): array;
 
+    public function addPrestationBox(string $idBox, string $prestationId, int $quantite) : void;
 }

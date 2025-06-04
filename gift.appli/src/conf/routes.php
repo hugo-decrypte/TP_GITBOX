@@ -6,6 +6,7 @@ use gift\appli\webui\actions\GetCreerBoxPersoAction;
 use gift\appli\webui\actions\CreerCoffretAction;
 use gift\appli\webui\actions\HomeAction;
 use gift\appli\webui\actions\MyBoxAction;
+use gift\appli\webui\actions\PostAjouterPrestationBoxAction;
 use gift\appli\webui\actions\PostCreerBoxPersoAction;
 use gift\appli\webui\actions\PrestationsAction;
 use gift\appli\webui\actions\ThemesAction;
@@ -41,5 +42,8 @@ return function ($app) {
         ->setName('post_creer_box_perso');
     $app->post('/signin', PostSigninAction::class)
         ->setName('post_signin');
+    $app->post('/prestations', PostAjouterPrestationBoxAction::class)
+        ->setName('prestations');
+
     return  $app;
 };
