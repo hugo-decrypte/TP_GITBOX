@@ -1,6 +1,6 @@
 <?php
 
-namespace gift\appli\webui\actions;
+namespace gift\appli\webui\actions\Abstract;
 
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
