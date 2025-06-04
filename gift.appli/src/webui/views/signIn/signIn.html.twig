@@ -1,0 +1,25 @@
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+    <form action="{{ url_for('post_signin') }}" method="post" class="bg-white shadow-md rounded-lg p-6">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                Email
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="libelle" name="libelle" type="text" placeholder="exemple@mail.com" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Mot de passe
+            </label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" placeholder="Veuillez renseigner votre mot de passe" required></textarea>
+        </div>
+
+        <div class="mb-6">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Se connecter
+            </button>
+        </div>
+    </form>
+{% endblock %}
