@@ -58,7 +58,7 @@ class FormBuilder implements FormBuilderInterface {
                     'required' => true
                 ],
                 [
-                    'name' => 'Mot de passe',
+                    'name' => 'password',
                     'label' => 'Mot de passe',
                     'type' => 'password',
                     'placeholder' => 'Renseigner votre mot de passe',
