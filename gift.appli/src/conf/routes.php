@@ -33,9 +33,13 @@ return function ($app) {
 
     $app->get('/creer-box-modele', GetCreerBoxModeleAction::class)
         ->setName('creer_box_modele');
+    $app->get('/signin', GetSigninAction::class)
+        ->setName('signin');
 
     //-----------POST-----------//
     $app->post('/creer-box-perso', PostCreerBoxPersoAction::class)
         ->setName('post_creer_box_perso');
+    $app->post('/signin', PostSigninAction::class)
+        ->setName('post_signin');
     return  $app;
 };

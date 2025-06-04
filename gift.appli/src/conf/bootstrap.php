@@ -2,8 +2,12 @@
 
 
 use DI\Container;
+use gift\appli\application_core\application\providers\CsrfTokenProvider;
+use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
 use gift\appli\application_core\application\useCases\CatalogueService;
+use gift\appli\application_core\application\useCases\FormBuilder;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
 use gift\appli\infrastructure\Eloquent;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
@@ -24,6 +28,8 @@ try {
 
 $container = new Container();
 $container->set(CatalogueServiceInterface::class, \DI\autowire(CatalogueService::class));
+$container->set(FormBuilderInterface::class, \DI\autowire(FormBuilder::class));
+$container->set(CsrfTokenProviderInterface::class, \DI\autowire(CsrfTokenProvider::class));
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
