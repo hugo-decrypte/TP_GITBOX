@@ -3,9 +3,13 @@
 
 use DI\Container;
 use gift\appli\application_core\application\providers\CsrfTokenProvider;
+use gift\appli\application_core\application\providers\interfaces\AuthnProviderInterface;
 use gift\appli\application_core\application\providers\interfaces\CsrfTokenProviderInterface;
+use gift\appli\application_core\application\providers\SessionAuthnProvider;
+use gift\appli\application_core\application\useCases\AuthnService;
 use gift\appli\application_core\application\useCases\CatalogueService;
 use gift\appli\application_core\application\useCases\FormBuilder;
+use gift\appli\application_core\application\useCases\interfaces\AuthnServiceInterface;
 use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
 use gift\appli\infrastructure\Eloquent;
@@ -30,6 +34,8 @@ $container = new Container();
 $container->set(CatalogueServiceInterface::class, \DI\autowire(CatalogueService::class));
 $container->set(FormBuilderInterface::class, \DI\autowire(FormBuilder::class));
 $container->set(CsrfTokenProviderInterface::class, \DI\autowire(CsrfTokenProvider::class));
+$container->set(AuthnProviderInterface::class, \DI\autowire(SessionAuthnProvider::class));
+$container->set(AuthnServiceInterface::class, \DI\autowire(AuthnService::class));
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
