@@ -5,10 +5,10 @@
         <h2 class="text-xl font-semibold text-gray-800 mb-4">Mes Box :</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {% for box in boxes %}
-                <div class="bg-blue-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
+                <div class="bg-violet-100 p-2 rounded shadow hover:shadow-md transition-shadow text-center">
                     <button
                             data-target="box-{{ box.id }}"
-                            class="box-button w-full text-blue-800 hover:text-blue-900 transition text-sm">
+                            class="box-button w-full text-violet-800 hover:text-violet-900 transition text-sm">
                         {{ box.libelle }}
                     </button>
                 </div>

@@ -7,7 +7,7 @@ use gift\appli\webui\actions\CreerCoffretAction;
 use gift\appli\webui\actions\HomeAction;
 use gift\appli\webui\actions\MyBoxAction;
 use gift\appli\webui\actions\PostCreerBoxPersoAction;
-use gift\appli\webui\actions\Prestations;
+use gift\appli\webui\actions\PrestationsAction;
 use gift\appli\webui\actions\ThemesAction;
 
 return function ($app) {
@@ -19,7 +19,7 @@ return function ($app) {
         ->setName('categories');
     $app->get('/themes', ThemesAction::class)
         ->setName("themes");
-    $app->get('/prestations', Prestations::class)
+    $app->get('/prestations', PrestationsAction::class)
         ->setName('prestations');
     $app->get('/creerCoffret', CreerCoffretAction::class)
         ->setName('creerCoffret');

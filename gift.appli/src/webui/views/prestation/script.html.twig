@@ -1,23 +1,43 @@
 <script>
-    if (window.location.hash && window.location.hash.length > 1) {
-        document.getElementById("prestation-" + window.location.hash.substring(1)).classList.remove("hidden");
-        document.getElementById("prestation-liste").classList.add("hidden");
-    } else {
-    }
-
     document.querySelectorAll(".prestations-buttons").forEach(btn => {
         btn.addEventListener("click", function() {
             const targetId = btn.getAttribute('data-target');
             document.getElementById(targetId).classList.remove("hidden");
             document.getElementById("prestation-liste").classList.add("hidden");
-        })
-    })
+        });
+    });
 
     document.querySelectorAll(".retour").forEach(btn => {
-        btn.addEventListener("click", function(){
+        btn.addEventListener("click", function() {
             const targetId = btn.getAttribute("data-target");
             document.getElementById(targetId).classList.add("hidden");
             document.getElementById("prestation-liste").classList.remove("hidden");
-        })
-    })
+        });
+    });
+
+    document.querySelectorAll(".plus-button").forEach(button => {
+        button.addEventListener("click", function(event) {
+            document.querySelectorAll('.submenu').forEach(menu => {
+                menu.classList.remove('show');
+            });
+            const submenu = this.parentElement.querySelector('.submenu');
+            submenu.classList.toggle("show");
+        });
+    });
+
+    // Empêcher la fermeture du menu contextuel lors du clic sur un élément de la liste
+    document.querySelectorAll(".submenu li").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+    });
+
+    // Fermer le sous-menu si on clique ailleurs
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.plus-button') && !event.target.closest('.submenu li')) {
+            document.querySelectorAll('.submenu').forEach(menu => {
+                menu.classList.remove('show');
+            });
+        }
+    });
 </script>

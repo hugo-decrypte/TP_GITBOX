@@ -1,19 +1,77 @@
 {% extends "base/base.html.twig" %}
 
 {% block body %}
-
     <div id="prestation-liste" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {% for prestation in prestations %}
-            <button
-                    data-target="prestation-{{ prestation.id }}"
-                    class="prestations-buttons p-5 m-2 bg-white shadow gap-6 rounded flex justify-between items-center">
-                <p class="font-medium text-gray-800">{{ prestation.libelle|e }}</p>
-                <span class="text-green-600">{{ prestation.tarif|number_format(2, ',', ' ') }} €</span>
-            </button>
+            <div class="prestation-item bg-white shadow rounded p-4 relative">
+                <button data-target="prestation-{{ prestation.id }}"
+                        class="prestations-buttons w-full text-left">
+                    <p class="font-medium text-gray-500">{{ prestation.libelle|e }}</p>
+                    <span class="text-green-600">{{ prestation.tarif|number_format(2, ',', ' ') }} €</span>
+                </button>
+                <button class="plus-button bg-violet-400 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center absolute top-2 right-2">+</button>
+                <div class="submenu absolute hidden bg-violet-100 text-black shadow-lg rounded p-2 z-10 w-48 max-h-48 overflow-y-auto">
+
+                    <p>Ajouter une prestation</p>
+                    <ul class="list-none p-0 m-0">
+
+                        {% for box in boxes %}
+                            <li class="p-2 hover:bg-gray-200">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" id="box-{{ box.id }}-{{ prestation.id }}" name="box-{{ box.id }}" class="mr-2">
+                                    {{ box.libelle|e }}
+                                </label>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                    <button class="mt-2 bg-violet-500 text-white p-1 rounded w-full">
+                        Terminer
+                    </button>
+                </div>
+            </div>
         {% endfor %}
     </div>
 
     {% include "prestation/prestation.html.twig" %}
-
     {% include "prestation/script.html.twig" %}
+
+    <style>
+        .submenu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            max-height: 192px;
+            overflow-y: auto;
+        }
+        .submenu.show {
+            display: block;
+        }
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .submenu li {
+            padding: 0.5rem;
+        }
+        .submenu li:hover {
+            background-color: whitesmoke;
+        }
+        .submenu label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .submenu input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .prestations-buttons {
+            margin-right: 2rem;
+        }
+
+    </style>
 {% endblock %}
