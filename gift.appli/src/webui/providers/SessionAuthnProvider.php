@@ -2,7 +2,7 @@
 
 namespace gift\appli\webui\providers;
 
-use gift\appli\application_core\application\useCases\interfaces\AuthnServiceInterface;
+use gift\appli\application_core\application\use_cases\interfaces\AuthnServiceInterface;
 use gift\appli\application_core\domain\entities\User;
 use gift\appli\webui\providers\interfaces\AuthnProviderInterface;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace gift\appli\application_core\application\useCases;
+namespace gift\appli\application_core\application\use_cases;
 
-use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
+use gift\appli\application_core\application\use_cases\interfaces\FormBuilderInterface;
 
 class FormBuilder implements FormBuilderInterface {
     public function buildCreerBoxPersoForm(): array {

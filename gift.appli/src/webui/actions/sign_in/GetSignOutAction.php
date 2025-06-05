@@ -1,6 +1,6 @@
 <?php
 
-namespace gift\appli\webui\actions\SignIn;
+namespace gift\appli\webui\actions\sign_in;
 
 use gift\appli\webui\actions\Abstract\AbstractAction;
 use gift\appli\webui\providers\interfaces\AuthnProviderInterface;

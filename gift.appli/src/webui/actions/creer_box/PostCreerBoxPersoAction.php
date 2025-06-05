@@ -1,9 +1,9 @@
 <?php
 
-namespace gift\appli\webui\actions\CreerBox;
+namespace gift\appli\webui\actions\creer_box;
 
-use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
-use gift\appli\webui\actions\Abstract\AbstractAction;
+use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
+use gift\appli\webui\actions\abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteContext;

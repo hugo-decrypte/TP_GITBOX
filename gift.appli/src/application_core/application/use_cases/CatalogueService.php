@@ -1,10 +1,10 @@
 <?php
 
-namespace gift\appli\application_core\application\useCases;
+namespace gift\appli\application_core\application\use_cases;
 
 use Faker\Core\Uuid;
 use gift\appli\application_core\application\exceptions\DatabaseException;
-use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\domain\entities\Box;
 use gift\appli\application_core\domain\entities\Categorie;
 use gift\appli\application_core\domain\entities\CoffretType;

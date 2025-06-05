@@ -2,12 +2,12 @@
 
 
 use DI\Container;
-use gift\appli\application_core\application\useCases\AuthnService;
-use gift\appli\application_core\application\useCases\CatalogueService;
-use gift\appli\application_core\application\useCases\FormBuilder;
-use gift\appli\application_core\application\useCases\interfaces\AuthnServiceInterface;
-use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
-use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
+use gift\appli\application_core\application\use_cases\AuthnService;
+use gift\appli\application_core\application\use_cases\CatalogueService;
+use gift\appli\application_core\application\use_cases\FormBuilder;
+use gift\appli\application_core\application\use_cases\interfaces\AuthnServiceInterface;
+use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
+use gift\appli\application_core\application\use_cases\interfaces\FormBuilderInterface;
 use gift\appli\infrastructure\Eloquent;
 use gift\appli\webui\providers\CsrfTokenProvider;
 use gift\appli\webui\providers\interfaces\AuthnProviderInterface;

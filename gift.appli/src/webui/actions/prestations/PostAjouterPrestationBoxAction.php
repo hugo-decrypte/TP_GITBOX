@@ -1,8 +1,8 @@
 <?php
 
-namespace gift\appli\webui\actions\Prestations;
+namespace gift\appli\webui\actions\prestations;
 
-use gift\appli\application_core\application\useCases\interfaces\CatalogueServiceInterface;
+use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
 use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;

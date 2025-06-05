@@ -1,14 +1,15 @@
 <?php
 
-namespace gift\appli\webui\actions\Register;
+namespace gift\appli\webui\actions\sign_in;
 
-use gift\appli\application_core\application\useCases\interfaces\FormBuilderInterface;
+use gift\appli\application_core\application\use_cases\interfaces\FormBuilderInterface;
 use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
 
-class GetCreerCompteAction extends AbstractAction {
+class GetSigninAction extends AbstractAction{
+
     private FormBuilderInterface $formBuilder;
 
     public function __construct(FormBuilderInterface $formBuilder) {
@@ -19,7 +20,7 @@ class GetCreerCompteAction extends AbstractAction {
     {
         $twig = Twig::fromRequest($request);
         return $twig->render($response, 'form/index.html.twig', [
-            "form" => $this->formBuilder->buildRegisterForm()
+            "form" => $this->formBuilder->buildSignInForm()
         ]);
     }
 }
