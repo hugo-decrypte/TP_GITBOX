@@ -11,6 +11,7 @@ interface CatalogueServiceInterface {
     public function getCoffretById(int $id): array;
     public function getPrestations(): array;
     public function getPrestationsByBox(string $boxId): array;
+    public function getPrestationsByCoffretType(int $coffretType): array;
     public function getCoffretType(): array;
     public function creerBoxVide(string $createurId, string $libelle, string $description) : array;
 

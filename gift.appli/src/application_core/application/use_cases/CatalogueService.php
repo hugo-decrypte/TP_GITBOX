@@ -161,9 +161,17 @@ class CatalogueService implements CatalogueServiceInterface {
         }
     }
 
+    public function getPrestationsByCoffretType(int $coffretType): array {
+        try {
+            return CoffretType::with('prestations')->findOrFail($coffretType)->prestations->toArray();
+        } catch (\Throwable $e) {
+            throw new DatabaseException("Erreur lors de la récupération des prestations pour le coffret type");
+        }
+    }
+
     public function creerBoxModel(string $createurId, string $libelle, string $description, int $coffretType): void {
         $box = $this->creerBoxVide($createurId,$libelle,$description);
-        $presta = $this->getPrestationsbyCategorie($coffretType);
+        $presta = $this->getPrestationsByCoffretType($coffretType);
 
         foreach ($presta as $prestation){
             $this->addPrestationBox($box["id"], $prestation['id']);
