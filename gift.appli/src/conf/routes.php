@@ -4,6 +4,7 @@ use gift\appli\webui\actions\creer_box\GetCreerBoxModeleAction;
 use gift\appli\webui\actions\creer_box\GetCreerBoxPersoAction;
 use gift\appli\webui\actions\creer_box\GetCreerCoffretAction;
 use gift\appli\webui\actions\creer_box\PostCreerBoxPersoAction;
+use gift\appli\webui\actions\creer_box\PostCreerBoxModeleAction;
 use gift\appli\webui\actions\GetCategoriesAction;
 use gift\appli\webui\actions\GetHomeAction;
 use gift\appli\webui\actions\GetMyBoxAction;
@@ -58,6 +59,8 @@ return function ($app) {
         ->setName('post_creer_compte');
     $app->post('/mes-box', ValidateBoxAction::class)
         ->setName("myBox");
+    $app->post('/creer-box-modele', PostCreerBoxModeleAction::class)
+        ->setName('post_creer_box_modele');
 
     return $app;
 };

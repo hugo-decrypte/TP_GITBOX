@@ -2,9 +2,13 @@
 
 namespace gift\appli\application_core\application\use_cases;
 
+use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
 use gift\appli\application_core\application\use_cases\interfaces\FormBuilderInterface;
 
 class FormBuilder implements FormBuilderInterface {
+
+    public function __construct(private CatalogueServiceInterface $catalogueService){}
+
     public function buildCreerBoxPersoForm(): array {
         return [
             'actionRoute' => 'post_creer_box_perso',
@@ -31,11 +35,41 @@ class FormBuilder implements FormBuilderInterface {
     }
 
     public function buildCreerBoxModelForm() : array{
+        $arrayCoffret = $this->catalogueService->getCoffretType();
+        $options = [];
+        foreach($arrayCoffret as $coffret){
+            $options[] = [
+                "label" => $coffret['libelle'],
+                "value" => $coffret['id']
+            ];
+        }
+
         return [
-            'actionRoute' => 'post_creer_box_model',
-            'submit_button' => "",
-            'inputs' => [],
-            'selects' => []
+            'actionRoute' => 'post_creer_box_modele',
+            'submit_button' => "Créer la Box",
+            'inputs' => [
+                [
+                    'name' => 'libelle',
+                    'label' => 'Libellé de la Box',
+                    'type' => 'text',
+                    'placeholder' => 'Libellé de la box',
+                    'required' => true
+                ],
+                [
+                    'name' => 'description',
+                    'label' => 'Description',
+                    'type' => 'textarea',
+                    'placeholder' => 'Description de la box',
+                    "required" => true,
+                ]
+            ],
+            'selects' => [
+                [
+                    'name' => 'selector',
+                    'label' => 'Séléctionnez le coffret type',
+                    'options' => $options
+                ]
+            ]
         ];
     }
 

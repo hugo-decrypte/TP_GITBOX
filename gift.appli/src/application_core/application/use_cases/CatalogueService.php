@@ -71,6 +71,14 @@ class CatalogueService implements CatalogueServiceInterface {
         }
     }
 
+    public function getCoffretType(): array {
+        try {
+            return CoffretType::all()->toArray();
+        } catch (\Throwable $e) {
+            throw new DatabaseException("Erreur lors de la récupération d'un coffret par son identidiant.");
+        }
+    }
+
     public function getBox(): array {
         try {
             return Box::with("prestations")->get()->toArray();
@@ -133,6 +141,15 @@ class CatalogueService implements CatalogueServiceInterface {
             $box->save();
         } else {
             throw new \RuntimeException("Box non trouvée.");
+        }
+    }
+
+    public function creerBoxModel(string $createurId, string $libelle, string $description, int $coffretType): void {
+        $box = $this->creerBoxVide($createurId,$libelle,$description);
+        $presta = $this->getPrestationsbyCategorie($coffretType);
+
+        foreach ($presta as $prestation){
+            $this->addPrestationBox($box["id"], $prestation['id']);
         }
     }
 }
