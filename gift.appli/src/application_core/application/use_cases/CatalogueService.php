@@ -55,6 +55,15 @@ class CatalogueService implements CatalogueServiceInterface {
         }
     }
 
+    public function getPrestationsByBox(string $boxId): array {
+        try {
+            $box = Box::find($boxId);
+            return $box->prestations()->get()->toArray();
+        } catch(\Throwable $e){
+            throw new DatabaseException("Erreur lors de la récupération des prestations par l'id d'une box");
+        }
+    }
+
     public function getThemesCoffrets(): array {
         try {
             return Theme::with('coffrets.prestations')->get()->toArray();
@@ -84,6 +93,14 @@ class CatalogueService implements CatalogueServiceInterface {
             return Box::with("prestations")->get()->toArray();
         } catch (\Throwable $e) {
             throw new DatabaseException("Erreur lors de la récupération des box.");
+        }
+    }
+
+    public function getBoxById(string $boxId): array {
+        try {
+            return Box::where('id', $boxId)->first()->toArray();
+        } catch (\Throwable $e) {
+            throw new DatabaseException("Erreur lors de la récupération de la box.");
         }
     }
 

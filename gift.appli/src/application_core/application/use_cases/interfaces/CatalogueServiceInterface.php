@@ -10,11 +10,12 @@ interface CatalogueServiceInterface {
     public function getThemesCoffrets(): array;
     public function getCoffretById(int $id): array;
     public function getPrestations(): array;
+    public function getPrestationsByBox(string $boxId): array;
     public function getCoffretType(): array;
     public function creerBoxVide(string $createurId, string $libelle, string $description) : array;
 
     public function getBox(): array;
-
+    public function getBoxById(string $boxId): array;
     public function addPrestationBox(string $idBox, string $prestationId, int $quantite) : void;
 
     public function validateBox(String $id);
