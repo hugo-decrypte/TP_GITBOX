@@ -26,8 +26,13 @@ class GetMyBoxAction extends AbstractAction {
                 "code" => 500,
                 "message" => "Erreur interne du serveur, " . $e->getMessage() . " veuillez essayez plus tard."]);
         }
+
+        $boxesValidated = array_filter($boxes, fn($box) => $box["statut"] != 0);
+        $boxesNotValidated = array_filter($boxes, fn($box) => $box["statut"] == 0);
+
         return $twig->render($response, 'box/index.html.twig', [
-            'boxes' => $boxes
+            'boxesValidated' => $boxesValidated,
+            'boxesNotValidated' => $boxesNotValidated
         ]);
     }
 }
