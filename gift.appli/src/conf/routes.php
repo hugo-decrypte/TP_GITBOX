@@ -2,6 +2,7 @@
 
 use gift\appli\api\BoxApi;
 use gift\appli\api\CategoryApi;
+use gift\appli\api\PrestationsApi;
 use gift\appli\webui\actions\creer_box\GetCreerBoxModeleAction;
 use gift\appli\webui\actions\creer_box\GetCreerBoxPersoAction;
 use gift\appli\webui\actions\creer_box\GetCreerCoffretAction;
@@ -67,6 +68,8 @@ return function ($app) {
     //-----------API-----------//
     $app->get('/api/categories', CategoryApi::class)
         ->setName('api_categories');
+    $app->get('/api/prestations', PrestationsApi::class)
+        ->setName('api_prestations');
     $app->get('/api/box/{id}', BoxApi::class)
         ->setName('api_categories');
     return $app;
