@@ -16,6 +16,15 @@ Bienvenue dans le dépôt GitHub du projet **GIFTBOX**,
 
 --- 
 
+## Répartition des tâches :
+
+- **Nous avons créé un trello pour nous répartir les tâches du projet dont voici le lien : **
+- https://trello.com/b/GfJpMsMK/les-bonbons-cest-bon
+
+Il y a certaines fonctionnalités que nous n'avons pas eu le temps de faire ou de terminer, tout cela est visible dans le trello
+
+
+
 ## ⚓ Mise en place de Docker : 
 
 - **Vous devrez créer un fichier .env à partir du template .exsemple.env disponible dans le repo**
