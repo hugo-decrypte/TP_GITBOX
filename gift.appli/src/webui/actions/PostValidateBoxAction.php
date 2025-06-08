@@ -7,9 +7,10 @@ use gift\appli\application_core\application\use_cases\interfaces\CatalogueServic
 use gift\appli\webui\actions\Abstract\AbstractAction;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
-class ValidateBoxAction extends AbstractAction {
+class PostValidateBoxAction extends AbstractAction {
     private CatalogueServiceInterface $catalogueService;
 
     public function __construct(CatalogueServiceInterface $catalogueService) {
@@ -29,8 +30,15 @@ class ValidateBoxAction extends AbstractAction {
                 "code" => 500,
                 "message" => "Erreur interne du serveur, " . $e->getMessage() . " Veuillez essayez plus tard."]);
         }
-        return $twig->render($response, 'box/index.html.twig', [
-            'boxes' => $boxes
-        ]);
+
+        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
+
+        // Générer l'URL depuis le nom de route
+        $url = $routeParser->urlFor('myBox');
+
+        // Rediriger
+        return $response
+            ->withHeader('Location', $url)
+            ->withStatus(302);
     }
 }
