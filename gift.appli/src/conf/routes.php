@@ -29,8 +29,7 @@ return function ($app) {
         ->setName('categories');
     $app->get('/themes', GetThemesAction::class)
         ->setName("themes");
-    $app->get('/prestations', GetPrestationsAction::class)
-        ->setName('prestations');
+    $app->get('/prestations', GetPrestationsAction::class);
     $app->get('/creerCoffret', GetCreerCoffretAction::class)
         ->setName('creerCoffret');
     $app->get('/mes-box', GetMyBoxAction::class)
