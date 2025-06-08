@@ -69,9 +69,11 @@ return function ($app) {
     //-----------API-----------//
     $app->get('/api/categories', CategoryApi::class)
         ->setName('api_categories');
-    $app->get('/api/prestations', PrestationsApi::class)
-        ->setName('api_prestations');
     $app->get('/api/box/{id}', BoxApi::class)
         ->setName('api_categories');
+    $app->get('/api/prestations', PrestationsApi::class)
+        ->setName('api_prestations');
+    $app->get('/api/categories/{id}/prestations', PrestationsByCategoryApi::class)
+        ->setName('api_prestations_by_category');
     return $app;
 };
