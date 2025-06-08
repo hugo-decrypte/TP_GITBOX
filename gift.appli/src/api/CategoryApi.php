@@ -3,8 +3,8 @@ namespace gift\appli\api;
 
 use gift\appli\api\abstract\AbstractApi;
 use gift\appli\application_core\application\use_cases\interfaces\CatalogueServiceInterface;
-use \Slim\Psr7\Request;
-use \Slim\Psr7\Response;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
 
 class CategoryApi extends AbstractApi {
@@ -28,7 +28,7 @@ class CategoryApi extends AbstractApi {
                     "description" => $cat['description']
                 ],
                 "links" => [
-                    "self" => [ "href" => "/categories/{$cat['id']}/" ]
+                    "self" => [ "href" => "/api/categories/{$cat['id']}/prestations" ]
                 ]
             ];
         }
