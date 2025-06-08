@@ -12,7 +12,10 @@ use gift\appli\models\CoffretType;
 use gift\appli\models\Prestation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-Eloquent::init('../conf/db.ini');
+try {
+    Eloquent::init('../conf/db.ini');
+} catch (Exception $e) {
+}
 
 // Récupérer toutes les catégories
 $categories = Categorie::all();
