@@ -17,21 +17,19 @@ class PrestationsApi extends AbstractApi {
         $collection = [
             "type" => "collection",
             "count" => count($prestations),
-            "categories" => []
+            "prestations" => []
         ];
 
         foreach ($prestations as $presta) {
             $collection["prestations"][] = [
-                "prestation" => [
-                    "id" => $presta['id'],
-                    "libelle" => $presta['libelle'],
-                    "description" => $presta['description'],
-                    "url" => $presta['url'],
-                    "unite" => $presta['unite'],
-                    "tarif" => $presta['tarif'],
-                    "img" => $presta['img'],
-                    "cat_id" => $presta['cat_id']
-                ],
+                "id" => $presta['id'],
+                "libelle" => $presta['libelle'],
+                "description" => $presta['description'],
+                "url" => $presta['url'],
+                "unite" => $presta['unite'],
+                "tarif" => $presta['tarif'],
+                "img" => $presta['img'],
+                "cat_id" => $presta['cat_id']
             ];
         }
 
